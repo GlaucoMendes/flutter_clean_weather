@@ -1,0 +1,24 @@
+{
+ // "dart.flutterSdkPath": "C:\\Users\\Glauc\\fvm\\versions\\stable",
+  // Remove .fvm files from search
+  "search.exclude": {
+    "**/.fvm": true
+  },
+  // Remove from file watching
+  "files.watcherExclude": {
+    "**/.fvm": true
+  },
+  "[dart]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+      "source.organizeImports": true
+    },
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [
+      120
+    ]
+  },
+  "dart.lineLength": 120,
+  "editor.tabSize": 2
+}
