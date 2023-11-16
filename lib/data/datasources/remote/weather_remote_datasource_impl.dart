@@ -13,21 +13,25 @@ class WeatherRemoteDatasourceImpl implements WeatherRemoteDatasource {
   Future<Location> getLocationByString(String text) async {
     try {
       final response = await dio.get<List<dynamic>>('/locations/v1/search', queryParameters: {'q': text});
-      if (response.statusCode == 200) {
-        final data = response.data;
-        if (data != null && data.isNotEmpty) {
-          final first = data.first;
-          if (first is! Map<String, dynamic>) throw DtoConversionFailure();
 
-          return LocationMapper.fromDTO(LocationDTO.fromJson(first));
-        } else {
-          throw EmptyDataFailure();
-        }
+      final data = response.data;
+      if (data != null && data.isNotEmpty) {
+        final first = data.first;
+        if (first is! Map<String, dynamic>) throw DtoConversionFailure();
+        final dto = safeFromJson<LocationDTO>(first, LocationDTO.fromJson);
+
+        return LocationMapper.fromDTO(dto);
       } else {
-        throw RequestFailure(statusCode: response.statusCode);
+        throw EmptyDataFailure();
       }
+    } on DioException catch (e) {
+      throw RequestFailure(statusCode: e.response?.statusCode);
+    } on DtoConversionFailure {
+      rethrow;
+    } on EmptyDataFailure {
+      rethrow;
     } catch (e) {
-      throw UnknownFailure(message: e.toString());
+      rethrow;
     }
   }
 }

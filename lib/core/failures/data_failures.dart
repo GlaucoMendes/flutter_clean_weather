@@ -4,20 +4,10 @@ class RequestFailure implements Failure {
   final int? statusCode;
 
   RequestFailure({this.statusCode});
-
-  @override
-  String toString() => 'RequestFailure (Status Code: $statusCode)';
 }
 
 class EmptyDataFailure implements Failure {}
 
-class DtoConversionFailure implements Failure {
-  final String message;
-
-  DtoConversionFailure({this.message = 'Failed to convert DTO'});
-
-  @override
-  String toString() => 'DtoConversionFailure: $message';
-}
+class DtoConversionFailure implements Failure {}
 
 class UnexpectedDataFormatFailure implements Failure {}

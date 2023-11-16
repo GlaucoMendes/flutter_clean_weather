@@ -28,8 +28,11 @@ void main() async {
 
   final mock = await File('test/mocks/locations/location.json').readAsString();
   final locationDTO = LocationDTO.fromJson(jsonDecode(mock) as Map<String, dynamic>);
-  group('GetLocationByStringUsecase', () {
-    test('should return a location by city name', () async {
+
+  group('Get Location By String', () {
+    test(
+        'Checks if the GetLocationByStringUsecase successfully returns a Location instance when valid data is provided by the WeatherRemoteDatasource.',
+        () async {
       when(() => weatherRemoteDatasource.getLocationByString(any())).thenAnswer(
         (_) async => LocationMapper.fromDTO(locationDTO),
       );
@@ -41,7 +44,9 @@ void main() async {
       verifyNoMoreInteractions(weatherRemoteDatasource);
     });
 
-    test('should return a EmptyDataFailure', () async {
+    test(
+        'Confirms that an EmptyDataFailure is returned when the WeatherRemoteDatasource finds no data, indicating an empty response.',
+        () async {
       when(() => weatherRemoteDatasource.getLocationByString(any())).thenThrow(EmptyDataFailure());
       final result = await usecase.call('');
 
@@ -51,7 +56,8 @@ void main() async {
       verifyNoMoreInteractions(weatherRemoteDatasource);
     });
 
-    test('should return a RequestFailure', () async {
+    test('Ensures that a RequestFailure is returned when the WeatherRemoteDatasource encounters a request error.',
+        () async {
       when(() => weatherRemoteDatasource.getLocationByString(any())).thenThrow(RequestFailure());
       final result = await usecase.call('');
 
@@ -61,7 +67,9 @@ void main() async {
       verifyNoMoreInteractions(weatherRemoteDatasource);
     });
 
-    test('should return a DtoConversionFailure', () async {
+    test(
+        'Checks if a DtoConversionFailure is thrown when there is a DTO conversion error by the WeatherRemoteDatasource',
+        () async {
       when(() => weatherRemoteDatasource.getLocationByString(any())).thenThrow(DtoConversionFailure());
       final result = await usecase.call('');
 
@@ -71,7 +79,8 @@ void main() async {
       verifyNoMoreInteractions(weatherRemoteDatasource);
     });
 
-    test('should return a UnknownFailure', () async {
+    test('Confirms that an UnknownFailure is returned for unspecified errors caught by the WeatherRemoteDatasource.',
+        () async {
       when(() => weatherRemoteDatasource.getLocationByString(any())).thenThrow(UnknownFailure());
       final result = await usecase.call('');
 
@@ -81,7 +90,7 @@ void main() async {
       verifyNoMoreInteractions(weatherRemoteDatasource);
     });
 
-    test('should return a Exception', () async {
+    test('Tests if a generic exception is treated as an UnknownFailure by the GetLocationByStringUsecase', () async {
       when(() => weatherRemoteDatasource.getLocationByString(any())).thenThrow(Exception());
       final result = await usecase.call('');
 

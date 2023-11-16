@@ -1,33 +1,26 @@
-import 'package:flutter_clean_weather/core/core.dart';
 import 'package:flutter_clean_weather/data/dtos/location_dto.dart';
 import 'package:flutter_clean_weather/domain/entities/location.dart';
 
 class LocationMapper {
-  LocationMapper._();
-
   static Location fromDTO(LocationDTO dto) {
-    try {
-      return Location(
-        version: dto.version,
-        key: dto.key,
-        type: dto.type,
-        rank: dto.rank,
-        localizedName: dto.localizedName,
-        englishName: dto.englishName,
-        primaryPostalCode: dto.primaryPostalCode,
-        region: fromDTOCountry(dto.region),
-        country: fromDTOCountry(dto.country),
-        administrativeArea: fromDTOAdministrativeArea(dto.administrativeArea),
-        timeZone: fromDTOTimeZone(dto.timeZone),
-        geoPosition: fromDTOGeoPosition(dto.geoPosition),
-        isAlias: dto.isAlias,
-        parentCity: fromDTOParentCity(dto.parentCity),
-        supplementalAdminAreas: dto.supplementalAdminAreas.map(fromDTOSupplementalAdminArea).toList(),
-        dataSets: dto.dataSets,
-      );
-    } catch (e) {
-      throw DtoConversionFailure(message: e.toString());
-    }
+    return Location(
+      version: dto.version,
+      key: dto.key,
+      type: dto.type,
+      rank: dto.rank,
+      localizedName: dto.localizedName,
+      englishName: dto.englishName,
+      primaryPostalCode: dto.primaryPostalCode,
+      region: fromDTOCountry(dto.region),
+      country: fromDTOCountry(dto.country),
+      administrativeArea: fromDTOAdministrativeArea(dto.administrativeArea),
+      timeZone: fromDTOTimeZone(dto.timeZone),
+      geoPosition: fromDTOGeoPosition(dto.geoPosition),
+      isAlias: dto.isAlias,
+      parentCity: fromDTOParentCity(dto.parentCity),
+      supplementalAdminAreas: dto.supplementalAdminAreas.map(fromDTOSupplementalAdminArea).toList(),
+      dataSets: dto.dataSets,
+    );
   }
 
   static Country fromDTOCountry(CountryDTO dto) {

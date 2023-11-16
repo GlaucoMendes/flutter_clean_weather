@@ -1,4 +1,4 @@
-// TODO(Glauco): Remover todos os campos não utilizados
+// TODO(Glauco): Remove unused fields
 class Location {
   final int version;
   final String key;

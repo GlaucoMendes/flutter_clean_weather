@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'location_dto.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.pascal)
+@JsonSerializable(fieldRename: FieldRename.pascal, createToJson: false)
 class LocationDTO {
   final int version;
   final String key;
@@ -41,10 +41,9 @@ class LocationDTO {
   });
 
   factory LocationDTO.fromJson(Map<String, dynamic> json) => _$LocationDTOFromJson(json);
-  Map<String, dynamic> toJson() => _$LocationDTOToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.pascal)
+@JsonSerializable(fieldRename: FieldRename.pascal, createToJson: false)
 class AdministrativeAreaDTO {
   @JsonKey(name: 'ID')
   final String id;
@@ -68,10 +67,9 @@ class AdministrativeAreaDTO {
   });
 
   factory AdministrativeAreaDTO.fromJson(Map<String, dynamic> json) => _$AdministrativeAreaDTOFromJson(json);
-  Map<String, dynamic> toJson() => _$AdministrativeAreaDTOToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.pascal)
+@JsonSerializable(fieldRename: FieldRename.pascal, createToJson: false)
 class CountryDTO {
   @JsonKey(name: 'ID')
   final String id;
@@ -85,10 +83,9 @@ class CountryDTO {
   });
 
   factory CountryDTO.fromJson(Map<String, dynamic> json) => _$CountryDTOFromJson(json);
-  Map<String, dynamic> toJson() => _$CountryDTOToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.pascal)
+@JsonSerializable(fieldRename: FieldRename.pascal, createToJson: false)
 class GeoPositionDTO {
   final double latitude;
   final double longitude;
@@ -101,10 +98,9 @@ class GeoPositionDTO {
   });
 
   factory GeoPositionDTO.fromJson(Map<String, dynamic> json) => _$GeoPositionDTOFromJson(json);
-  Map<String, dynamic> toJson() => _$GeoPositionDTOToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.pascal)
+@JsonSerializable(fieldRename: FieldRename.pascal, createToJson: false)
 class ElevationDTO {
   final ImperialDTO metric;
   final ImperialDTO imperial;
@@ -115,10 +111,9 @@ class ElevationDTO {
   });
 
   factory ElevationDTO.fromJson(Map<String, dynamic> json) => _$ElevationDTOFromJson(json);
-  Map<String, dynamic> toJson() => _$ElevationDTOToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.pascal)
+@JsonSerializable(fieldRename: FieldRename.pascal, createToJson: false)
 class ImperialDTO {
   final double value;
   final String unit;
@@ -131,10 +126,9 @@ class ImperialDTO {
   });
 
   factory ImperialDTO.fromJson(Map<String, dynamic> json) => _$ImperialDTOFromJson(json);
-  Map<String, dynamic> toJson() => _$ImperialDTOToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.pascal)
+@JsonSerializable(fieldRename: FieldRename.pascal, createToJson: false)
 class ParentCityDTO {
   final String key;
   final String localizedName;
@@ -147,10 +141,9 @@ class ParentCityDTO {
   });
 
   factory ParentCityDTO.fromJson(Map<String, dynamic> json) => _$ParentCityDTOFromJson(json);
-  Map<String, dynamic> toJson() => _$ParentCityDTOToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.pascal)
+@JsonSerializable(fieldRename: FieldRename.pascal, createToJson: false)
 class SupplementalAdminAreaDTO {
   final int level;
   final String localizedName;
@@ -163,10 +156,9 @@ class SupplementalAdminAreaDTO {
   });
 
   factory SupplementalAdminAreaDTO.fromJson(Map<String, dynamic> json) => _$SupplementalAdminAreaDTOFromJson(json);
-  Map<String, dynamic> toJson() => _$SupplementalAdminAreaDTOToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.pascal)
+@JsonSerializable(fieldRename: FieldRename.pascal, createToJson: false)
 class TimeZoneDTO {
   final String code;
   final String name;
@@ -183,5 +175,4 @@ class TimeZoneDTO {
   });
 
   factory TimeZoneDTO.fromJson(Map<String, dynamic> json) => _$TimeZoneDTOFromJson(json);
-  Map<String, dynamic> toJson() => _$TimeZoneDTOToJson(this);
 }

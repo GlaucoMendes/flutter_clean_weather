@@ -1,75 +1,77 @@
 {
   "Version": 1,
-  "Key": "328328",
+  "Key": "36306",
   "Type": "City",
-  "Rank": 10,
-  "LocalizedName": "London",
-  "EnglishName": "London",
-  "PrimaryPostalCode": "EC4A 2",
+  "Rank": 45,
+  "LocalizedName": "Casa Verde",
+  "EnglishName": "Casa Verde",
+  "PrimaryPostalCode": "",
   "Region": {
-    "ID": "EUR",
-    "LocalizedName": "Europe",
-    "EnglishName": "Europe"
+    "ID": "SAM",
+    "LocalizedName": "South America",
+    "EnglishName": "South America"
   },
   "Country": {
-    "ID": "GB",
-    "LocalizedName": "United Kingdom",
-    "EnglishName": "United Kingdom"
+    "ID": "BR",
+    "LocalizedName": "Brazil",
+    "EnglishName": "Brazil"
   },
   "AdministrativeArea": {
-    "ID": "LND",
-    "LocalizedName": "London",
-    "EnglishName": "London",
+    "ID": "SP",
+    "LocalizedName": "São Paulo",
+    "EnglishName": "São Paulo",
     "Level": 1,
-    "LocalizedType": "London Borough",
-    "EnglishType": "London Borough",
-    "CountryID": "GB"
+    "LocalizedType": "State",
+    "EnglishType": "State",
+    "CountryID": "BR"
   },
   "TimeZone": {
-    "Code": "GMT",
-    "Name": "Europe/London",
-    "GmtOffset": 0,
+    "Code": "BRT",
+    "Name": "America/Sao_Paulo",
+    "GmtOffset": -3,
     "IsDaylightSaving": false,
-    "NextOffsetChange": "2024-03-31T01:00:00Z"
+    "NextOffsetChange": null
   },
   "GeoPosition": {
-    "Latitude": 51.514,
-    "Longitude": -0.107,
+    "Latitude": -23.495,
+    "Longitude": -46.656,
     "Elevation": {
       "Metric": {
-        "Value": 18,
+        "Value": 702,
         "Unit": "m",
         "UnitType": 5
       },
       "Imperial": {
-        "Value": 59,
+        "Value": 2302,
         "Unit": "ft",
         "UnitType": 0
       }
     }
   },
   "IsAlias": false,
+  "ParentCity": {
+    "Key": "45881",
+    "LocalizedName": "São Paulo",
+    "EnglishName": "São Paulo"
+  },
   "SupplementalAdminAreas": [
     {
-      "Level": 0,
-      "LocalizedName": "England",
-      "EnglishName": "England"
+      "Level": 2,
+      "LocalizedName": "São Paulo",
+      "EnglishName": "São Paulo"
     },
     {
       "Level": 3,
-      "LocalizedName": "Castle Baynard",
-      "EnglishName": "Castle Baynard"
+      "LocalizedName": "Casa Verde",
+      "EnglishName": "Casa Verde"
     }
   ],
   "DataSets": [
     "AirQualityCurrentConditions",
     "AirQualityForecasts",
     "Alerts",
-    "DailyPollenForecast",
-    "ForecastConfidence",
     "FutureRadar",
     "MinuteCast",
-    "Radar",
-    "TidalForecast"
+    "Radar"
   ]
 }
