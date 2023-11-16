@@ -3,7 +3,7 @@ part of '../core.dart';
 class RequestFailure implements Failure {
   final int? statusCode;
 
-  RequestFailure({required this.statusCode});
+  RequestFailure({this.statusCode});
 
   @override
   String toString() => 'RequestFailure (Status Code: $statusCode)';
