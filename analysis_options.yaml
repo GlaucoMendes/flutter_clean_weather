@@ -1,6 +1,6 @@
 include: package:very_good_analysis/analysis_options.yaml
 analyzer: 
-  exclude: [ 'bricks/**/__brick__/**/*.dart' ]
+  exclude: [ 'bricks/**/__brick__/**/*.dart', '**/*.g.dart' ]
    
   errors: 
     missing_required_param: error
