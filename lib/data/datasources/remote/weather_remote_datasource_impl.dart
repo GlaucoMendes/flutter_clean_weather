@@ -26,10 +26,28 @@ class WeatherRemoteDatasourceImpl implements WeatherRemoteDatasource {
       }
     } on DioException catch (e) {
       throw RequestFailure(statusCode: e.response?.statusCode);
-    } on DtoConversionFailure {
+    } catch (e) {
       rethrow;
-    } on EmptyDataFailure {
-      rethrow;
+    }
+  }
+
+  @override
+  Future<Location> getLocationByGeoPosition(double lat, double long) async {
+    try {
+      final response =
+          await dio.get<dynamic>('/locations/v1/cities/geoposition/search', queryParameters: {'q': '$lat,$long'});
+
+      final data = response.data;
+      if (data != null) {
+        if (data is! Map<String, dynamic>) throw DtoConversionFailure();
+        final dto = safeFromJson<LocationDTO>(data, LocationDTO.fromJson);
+
+        return LocationMapper.fromDTO(dto);
+      } else {
+        throw EmptyDataFailure();
+      }
+    } on DioException catch (e) {
+      throw RequestFailure(statusCode: e.response?.statusCode);
     } catch (e) {
       rethrow;
     }

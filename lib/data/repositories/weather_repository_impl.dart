@@ -25,4 +25,22 @@ class WeatherRepositoryImpl implements WeatherRepository {
       return Error(UnknownFailure(message: e.toString()));
     }
   }
+
+  @override
+  Future<Result<Location, Failure>> getLocationByGeoPosition(double lat, double long) async {
+    try {
+      final location = await remoteDatasource.getLocationByGeoPosition(lat, long);
+      return Success(location);
+    } on EmptyDataFailure catch (e) {
+      return Error(e);
+    } on RequestFailure catch (e) {
+      return Error(e);
+    } on DtoConversionFailure catch (e) {
+      return Error(e);
+    } on UnknownFailure catch (e) {
+      return Error(e);
+    } catch (e) {
+      return Error(UnknownFailure(message: e.toString()));
+    }
+  }
 }

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_clean_weather/data/datasources/remote/weather_remote_datasource_impl.dart';
 import 'package:flutter_clean_weather/data/repositories/weather_repository.dart';
 import 'package:flutter_clean_weather/data/repositories/weather_repository_impl.dart';
+import 'package:flutter_clean_weather/domain/usecases/locations/get_location_by_geoposition_usecase.dart';
 import 'package:flutter_clean_weather/domain/usecases/locations/get_location_by_string_usecase.dart';
 import 'package:get_it/get_it.dart';
 
@@ -24,7 +25,11 @@ class Locator {
   }
 
   static void _registerUseCases() {
-    _getIt.registerLazySingleton<GetLocationByStringUsecase>(() => GetLocationByStringUsecase(repository: _getIt()));
+    _getIt
+      ..registerLazySingleton<GetLocationByStringUsecase>(() => GetLocationByStringUsecase(repository: _getIt()))
+      ..registerLazySingleton<GetLocationByGeoPositionUsecase>(
+        () => GetLocationByGeoPositionUsecase(repository: _getIt()),
+      );
   }
 
   static void _registerDio() {

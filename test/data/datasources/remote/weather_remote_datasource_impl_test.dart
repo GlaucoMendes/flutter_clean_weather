@@ -20,13 +20,14 @@ void main() async {
   });
 
   final data = jsonDecode(await File('test/mocks/locations/location.json').readAsString());
-  const path = '/locations/v1/search';
+  const namePath = '/locations/v1/search';
+  const geoPath = '/locations/v1/cities/geoposition/search';
 
-  group('Weather Remote Datasource', () {
+  group('GetLocationByString', () {
     test(
         'Verifies if the getLocationByString method returns a Location instance when valid data is received from the API.',
         () async {
-      dioAdapter.onGet(path, (server) => server.reply(200, [data]));
+      dioAdapter.onGet(namePath, (server) => server.reply(200, [data]));
       final result = await weatherRemoteDatasourceImpl.getLocationByString('');
       expect(result, isA<Location>());
     });
@@ -34,7 +35,7 @@ void main() async {
     test(
         'Confirms that an EmptyDataFailure is thrown when the API returns an empty list, indicating no data was found.',
         () async {
-      dioAdapter.onGet(path, (server) => server.reply(200, <dynamic>[]));
+      dioAdapter.onGet(namePath, (server) => server.reply(200, <dynamic>[]));
       final call = weatherRemoteDatasourceImpl.getLocationByString('');
 
       await expectLater(call, throwsA(isA<EmptyDataFailure>()));
@@ -43,14 +44,14 @@ void main() async {
     test(
         'Ensures that a RequestFailure is thrown when the API returns an error status (e.g., 400), indicating a request failure.',
         () async {
-      dioAdapter.onGet(path, (server) => server.reply(400, ''));
+      dioAdapter.onGet(namePath, (server) => server.reply(400, ''));
       final call = weatherRemoteDatasourceImpl.getLocationByString('');
 
       await expectLater(call, throwsA(isA<RequestFailure>()));
     });
 
     test('Test for DtoConversionFailure Return for Invalid Response', () async {
-      dioAdapter.onGet(path, (server) => server.reply(200, ['']));
+      dioAdapter.onGet(namePath, (server) => server.reply(200, ['']));
       final call = weatherRemoteDatasourceImpl.getLocationByString('');
 
       await expectLater(call, throwsA(isA<DtoConversionFailure>()));
@@ -58,7 +59,7 @@ void main() async {
 
     test('Test for DtoConversionFailure Return for Invalid JSON', () async {
       dioAdapter.onGet(
-        path,
+        namePath,
         (server) => server.reply(200, [
           <String, dynamic>{'InvalidKey': 'InvalidValue'},
         ]),
@@ -66,6 +67,49 @@ void main() async {
       final call = weatherRemoteDatasourceImpl.getLocationByString('');
 
       await expectLater(call, throwsA(isA<DtoConversionFailure>()));
+    });
+  });
+  group('GetLocationByGeoLocation', () {
+    test(
+        'Verifies if the getLocationByGeoLocation method returns a Location instance when valid data is received from the API.',
+        () async {
+      dioAdapter.onGet(geoPath, (server) => server.reply(200, data));
+      final result = await weatherRemoteDatasourceImpl.getLocationByGeoPosition(0, 0);
+      expect(result, isA<Location>());
+    });
+
+    test(
+        'Confirms that an EmptyDataFailure is thrown when the API returns an empty list, indicating no data was found.',
+        () async {
+      dioAdapter.onGet(geoPath, (server) => server.reply(200, null));
+      final call = weatherRemoteDatasourceImpl.getLocationByGeoPosition(0, 0);
+
+      await expectLater(call, throwsA(isA<EmptyDataFailure>()));
+    });
+
+    test(
+        'Ensures that a RequestFailure is thrown when the API returns an error status (e.g., 400), indicating a request failure.',
+        () async {
+      dioAdapter.onGet(geoPath, (server) => server.reply(400, ''));
+      final call = weatherRemoteDatasourceImpl.getLocationByGeoPosition(0, 0);
+
+      await expectLater(call, throwsA(isA<RequestFailure>()));
+    });
+
+    test('Test for DtoConversionFailure Return for Invalid Response', () async {
+      dioAdapter.onGet(geoPath, (server) => server.reply(200, ['']));
+      final call = weatherRemoteDatasourceImpl.getLocationByGeoPosition(0, 0);
+
+      await expectLater(call, throwsA(isA<DtoConversionFailure>()));
+    });
+
+    test('Test for DtoConversionFailure Return for Invalid JSON', () async {
+      dioAdapter.onGet(
+        geoPath,
+        (server) => server.reply(200, [
+          <String, dynamic>{'InvalidKey': 'InvalidValue'},
+        ]),
+      );
     });
   });
 }
