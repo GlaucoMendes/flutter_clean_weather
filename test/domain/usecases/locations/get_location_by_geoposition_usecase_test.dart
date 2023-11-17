@@ -14,7 +14,7 @@ import 'package:mocktail/mocktail.dart';
 class MockWeatherDatasource extends Mock implements WeatherRemoteDatasourceImpl {}
 
 void main() async {
-  late WeatherRemoteDatasourceImpl weatherRemoteDatasource;
+  late WeatherRemoteDatasourceImpl datasource;
   late WeatherRepositoryImpl weatherRepository;
   late GetLocationByGeoPositionUsecase usecase;
 
@@ -22,8 +22,8 @@ void main() async {
   final locationDTO = LocationDTO.fromJson(jsonDecode(mock) as Map<String, dynamic>);
 
   setUp(() {
-    weatherRemoteDatasource = MockWeatherDatasource();
-    weatherRepository = WeatherRepositoryImpl(remoteDatasource: weatherRemoteDatasource);
+    datasource = MockWeatherDatasource();
+    weatherRepository = WeatherRepositoryImpl(remoteDatasource: datasource);
     usecase = GetLocationByGeoPositionUsecase(repository: weatherRepository);
   });
 
@@ -31,71 +31,71 @@ void main() async {
     test(
         'Checks if the GetLocationByGeoPositionUsecase successfully returns a Location instance when valid data is provided by the WeatherRemoteDatasource.',
         () async {
-      when(() => weatherRemoteDatasource.getLocationByGeoPosition(any(), any())).thenAnswer(
+      when(() => datasource.getLocationByGeoPosition(any(), any())).thenAnswer(
         (_) async => LocationMapper.fromDTO(locationDTO),
       );
       final result = await usecase.call(0, 0);
 
       expect(result.isSuccess(), true);
       expect(result.tryGetSuccess(), isA<Location>());
-      verify(() => weatherRemoteDatasource.getLocationByGeoPosition(any(), any())).called(1);
-      verifyNoMoreInteractions(weatherRemoteDatasource);
+      verify(() => datasource.getLocationByGeoPosition(any(), any())).called(1);
+      verifyNoMoreInteractions(datasource);
     });
 
     test(
         'Confirms that an EmptyDataFailure is returned when the WeatherRemoteDatasource finds no data, indicating an empty response.',
         () async {
-      when(() => weatherRemoteDatasource.getLocationByGeoPosition(any(), any())).thenThrow(EmptyDataFailure());
+      when(() => datasource.getLocationByGeoPosition(any(), any())).thenThrow(EmptyDataFailure());
       final result = await usecase.call(0, 0);
 
       expect(result.isError(), true);
       expect(result.tryGetError(), isA<EmptyDataFailure>());
-      verify(() => weatherRemoteDatasource.getLocationByGeoPosition(any(), any())).called(1);
-      verifyNoMoreInteractions(weatherRemoteDatasource);
+      verify(() => datasource.getLocationByGeoPosition(any(), any())).called(1);
+      verifyNoMoreInteractions(datasource);
     });
 
     test('Ensures that a RequestFailure is returned when the WeatherRemoteDatasource encounters a request error.',
         () async {
-      when(() => weatherRemoteDatasource.getLocationByGeoPosition(any(), any())).thenThrow(RequestFailure());
+      when(() => datasource.getLocationByGeoPosition(any(), any())).thenThrow(RequestFailure());
       final result = await usecase.call(0, 0);
 
       expect(result.isError(), true);
       expect(result.tryGetError(), isA<RequestFailure>());
-      verify(() => weatherRemoteDatasource.getLocationByGeoPosition(any(), any())).called(1);
-      verifyNoMoreInteractions(weatherRemoteDatasource);
+      verify(() => datasource.getLocationByGeoPosition(any(), any())).called(1);
+      verifyNoMoreInteractions(datasource);
     });
 
     test(
         'Checks if a DtoConversionFailure is thrown when there is a DTO conversion error by the WeatherRemoteDatasource',
         () async {
-      when(() => weatherRemoteDatasource.getLocationByGeoPosition(any(), any())).thenThrow(DtoConversionFailure());
+      when(() => datasource.getLocationByGeoPosition(any(), any())).thenThrow(DtoConversionFailure());
       final result = await usecase.call(0, 0);
 
       expect(result.isError(), true);
       expect(result.tryGetError(), isA<DtoConversionFailure>());
-      verify(() => weatherRemoteDatasource.getLocationByGeoPosition(any(), any())).called(1);
-      verifyNoMoreInteractions(weatherRemoteDatasource);
+      verify(() => datasource.getLocationByGeoPosition(any(), any())).called(1);
+      verifyNoMoreInteractions(datasource);
     });
 
     test('Confirms that an UnknownFailure is returned for unspecified errors caught by the WeatherRemoteDatasource.',
         () async {
-      when(() => weatherRemoteDatasource.getLocationByGeoPosition(any(), any())).thenThrow(UnknownFailure());
+      when(() => datasource.getLocationByGeoPosition(any(), any())).thenThrow(UnknownFailure());
       final result = await usecase.call(0, 0);
 
       expect(result.isError(), true);
       expect(result.tryGetError(), isA<UnknownFailure>());
-      verify(() => weatherRemoteDatasource.getLocationByGeoPosition(any(), any())).called(1);
-      verifyNoMoreInteractions(weatherRemoteDatasource);
+      verify(() => datasource.getLocationByGeoPosition(any(), any())).called(1);
+      verifyNoMoreInteractions(datasource);
     });
 
     test('Tests if a generic exception is treated as an UnknownFailure by the GetLocationByGeoLocation', () async {
-      when(() => weatherRemoteDatasource.getLocationByGeoPosition(any(), any())).thenThrow(Exception());
+      when(() => datasource.getLocationByGeoPosition(any(), any())).thenThrow(Exception());
       final result = await usecase.call(0, 0);
 
       expect(result.isError(), true);
       expect(result.tryGetError(), isA<UnknownFailure>());
-      verify(() => weatherRemoteDatasource.getLocationByGeoPosition(any(), any())).called(1);
-      verifyNoMoreInteractions(weatherRemoteDatasource);
+      verify(() => datasource.getLocationByGeoPosition(any(), any())).called(1);
+      verifyNoMoreInteractions(datasource);
     });
   });
 }
