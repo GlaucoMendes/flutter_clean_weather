@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_weather/core/enums/weather_icons_enum.dart';
-import 'package:lottie/lottie.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_clean_weather/presentation/home/cubit/forecast_cubit.dart';
+import 'package:flutter_clean_weather/presentation/home/widgets/forecast_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,33 +14,20 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
+  void initState() {
+    super.initState();
+    unawaited(context.read<ForecastCubit>().getForecastById('36306'));
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.primary,
       appBar: AppBar(title: const Text('Clean Weather')),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            GridView.builder(
-              itemCount: WeatherIcons.values.length,
-              shrinkWrap: true,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-              itemBuilder: (context, index) {
-                final key = WeatherIcons.values[index].toString().split('.').last;
-                return Column(
-                  children: [
-                    Text(key),
-                    SizedBox(
-                      height: 80,
-                      width: 80,
-                      child: Lottie.asset(
-                        'assets/lotties/$key.json',
-                      ),
-                    ),
-                  ],
-                );
-              },
-            ),
-          ],
+      body: const SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: ForecastWidget(),
         ),
       ),
     );
