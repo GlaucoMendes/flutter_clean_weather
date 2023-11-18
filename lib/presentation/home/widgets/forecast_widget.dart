@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_clean_weather/core/core.dart';
 import 'package:flutter_clean_weather/domain/entities/forecast.dart';
 import 'package:flutter_clean_weather/presentation/home/cubit/forecast_cubit.dart';
 
@@ -11,6 +12,7 @@ class ForecastWidget extends StatelessWidget {
     return BlocBuilder<ForecastCubit, ForecastState>(
       builder: (context, state) {
         const loading = Center(child: CircularProgressIndicator());
+
         return switch (state) {
           ForecastInitialState() => loading,
           ForecastLoadingState() => loading,
@@ -38,6 +40,7 @@ class _ForecastSuccessWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(),
+          Text(context.l10n.helloWorld),
         ],
       ),
     );
