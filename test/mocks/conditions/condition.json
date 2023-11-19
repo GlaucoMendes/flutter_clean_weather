@@ -1,0 +1,23 @@
+{
+  "LocalObservationDateTime": "2023-11-19T05:10:00-03:00",
+  "EpochTime": 1700381400,
+  "WeatherText": "Nublado",
+  "WeatherIcon": 7,
+  "HasPrecipitation": false,
+  "PrecipitationType": null,
+  "IsDayTime": false,
+  "Temperature": {
+    "Metric": {
+      "Value": 22.2,
+      "Unit": "C",
+      "UnitType": 17
+    },
+    "Imperial": {
+      "Value": 72,
+      "Unit": "F",
+      "UnitType": 18
+    }
+  },
+  "MobileLink": "http://www.accuweather.com/pt/br/casa-verde/36306/current-weather/36306",
+  "Link": "http://www.accuweather.com/pt/br/casa-verde/36306/current-weather/36306"
+}
