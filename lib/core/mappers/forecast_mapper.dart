@@ -1,3 +1,4 @@
+import 'package:flutter_clean_weather/core/core.dart';
 import 'package:flutter_clean_weather/core/enums/weather_icons_enum.dart';
 import 'package:flutter_clean_weather/data/dtos/forecast_dto.dart';
 import 'package:flutter_clean_weather/domain/entities/forecast.dart';
@@ -7,7 +8,7 @@ class ForecastMapper {
     return Forecast(
       dailyForecasts: dto.dailyForecasts.map((e) {
         return DailyForecast(
-          date: DateTime.parse(e.date),
+          date: DateTime.parse(e.date).toTimeZone,
           minTemp: e.temperature.minimum.value,
           maxTemp: e.temperature.maximum.value,
           iconDay: _mapWeatherCodeToIcon(e.day.icon),

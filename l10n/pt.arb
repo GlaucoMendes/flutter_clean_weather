@@ -1,6 +1,6 @@
 {
-  "@@locale": "en",
-  "nDaysForecast": "{days}-day forecast",
+  "@@locale": "pt",
+  "nDaysForecast": "Previsão para os próximos {days} dias",
   "@nDaysForecast": {
     "placeholders": {
       "days": {

@@ -14,5 +14,7 @@ enum WeatherIcons {
   snow,
   stormShowersDay,
   foggy,
-  rain,
+  rain;
+
+  String get asset => 'assets/lotties/${toString().split('.').last}.json';
 }

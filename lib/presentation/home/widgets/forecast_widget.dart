@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_weather/core/core.dart';
+import 'package:flutter_clean_weather/core/extensions/double_extension.dart';
 import 'package:flutter_clean_weather/domain/entities/forecast.dart';
 import 'package:flutter_clean_weather/presentation/home/cubit/forecast_cubit.dart';
+import 'package:lottie/lottie.dart';
 
 class ForecastWidget extends StatelessWidget {
   const ForecastWidget({super.key});
@@ -31,7 +33,7 @@ class _ForecastSuccessWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.secondary,
         borderRadius: BorderRadius.circular(16),
@@ -39,8 +41,60 @@ class _ForecastSuccessWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(),
-          Text(context.l10n.helloWorld),
+          Text(
+            context.l10n.nDaysForecast(forecast.dailyForecasts.length.toString()),
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          const SizedBox(height: 16),
+          ListView.separated(
+            shrinkWrap: true,
+            itemCount: forecast.dailyForecasts.length,
+            itemBuilder: (context, index) {
+              final day = forecast.dailyForecasts[index];
+              return Row(
+                children: [
+                  const Spacer(),
+                  SizedBox(
+                    width: 50,
+                    child: (day.date.day == DateTime.now().toTimeZone.day)
+                        ? Text(context.l10n.today, textAlign: TextAlign.center)
+                        : Text(
+                            day.date.weekdayName(context).capitalize.substring(0, 3),
+                            textAlign: TextAlign.center,
+                          ),
+                  ),
+                  const SizedBox(width: 16),
+                  Row(
+                    children: [
+                      if (day.iconDay != null)
+                        Lottie.asset(
+                          day.iconDay!.asset,
+                          width: 32,
+                          height: 32,
+                          fit: BoxFit.cover,
+                        ),
+                      const SizedBox(width: 8),
+                      Text(day.maxTemp.fahrenheitToCelsius()),
+                      const SizedBox(width: 8),
+                      const Text('/'),
+                      const SizedBox(width: 8),
+                      Text(day.minTemp.fahrenheitToCelsius()),
+                      const SizedBox(width: 8),
+                      if (day.iconNight != null)
+                        Lottie.asset(
+                          day.iconNight!.asset,
+                          width: 32,
+                          height: 32,
+                          fit: BoxFit.cover,
+                        ),
+                    ],
+                  ),
+                  const Spacer(flex: 2),
+                ],
+              );
+            },
+            separatorBuilder: (context, index) => const Divider(thickness: 0.5),
+          ),
         ],
       ),
     );
