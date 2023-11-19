@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_weather/core/core.dart';
 import 'package:flutter_clean_weather/core/extensions/double_extension.dart';
 import 'package:flutter_clean_weather/domain/entities/forecast.dart';
-import 'package:flutter_clean_weather/presentation/home/cubit/forecast_cubit.dart';
+import 'package:flutter_clean_weather/presentation/home/cubits/forecast/forecast_cubit.dart';
 import 'package:lottie/lottie.dart';
 
 class ForecastWidget extends StatelessWidget {

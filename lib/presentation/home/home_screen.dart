@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_clean_weather/presentation/home/cubit/forecast_cubit.dart';
+import 'package:flutter_clean_weather/presentation/home/cubits/forecast/forecast_cubit.dart';
 import 'package:flutter_clean_weather/presentation/home/widgets/forecast_widget.dart';
 
 class HomeScreen extends StatefulWidget {

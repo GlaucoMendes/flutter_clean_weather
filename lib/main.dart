@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_weather/core/locator.dart';
 import 'package:flutter_clean_weather/core/theme/weather_theme_data.dart';
-import 'package:flutter_clean_weather/presentation/home/cubit/forecast_cubit.dart';
+import 'package:flutter_clean_weather/presentation/home/cubits/forecast/forecast_cubit.dart';
 import 'package:flutter_clean_weather/presentation/home/home_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get_it/get_it.dart';
