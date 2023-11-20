@@ -1,6 +1,6 @@
 {
   "@@locale": "pt",
-  "nDaysForecast": "Previsão para os próximos {days} dias",
+  "nDaysForecast": "Previsão de {days} dias",
   "@nDaysForecast": {
     "placeholders": {
       "days": {
@@ -8,5 +8,13 @@
       }
     }
   },
-  "today": "Today"
+  "today": "Hoje",
+  "selectLocation": "Selecione um local",
+  "currentLocation": "Localização Atual",
+  "searchLocation": "Buscar Localização",
+  "locationPermissionDenied": "Permissão de localização negada",
+  "waitingGPS": "Aguardando GPS...",
+  "next": "Próximo",
+  "searchLocationBy": "Cidade, Estado ou País",
+  "search": "Buscar"
 }
