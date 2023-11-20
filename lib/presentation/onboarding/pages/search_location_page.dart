@@ -67,9 +67,9 @@ class _SearchLocationPageState extends State<SearchLocationPage> {
                               borderRadius: BorderRadius.circular(10),
                               onTap: () => Navigator.of(context).pop(location),
                               child: ListTile(
-                                title: Text(location.localizedName),
+                                title: Text(location.name),
                                 subtitle: Text(
-                                  '${location.administrativeArea.localizedName} (${location.administrativeArea.id}) - ${location.country.localizedName}',
+                                  '${location.administrativeArea.name} (${location.administrativeArea.id}) - ${location.country.name}',
                                 ),
                                 trailing: const Icon(Icons.push_pin_outlined),
                               ),

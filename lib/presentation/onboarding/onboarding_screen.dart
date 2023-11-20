@@ -93,9 +93,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ListTile(
-                    title: Text(location.localizedName),
+                    title: Text(location.name),
                     subtitle: Text(
-                      '${location.administrativeArea.localizedName} (${location.administrativeArea.id}) - ${location.country.localizedName}',
+                      '${location.administrativeArea.name} (${location.administrativeArea.id}) - ${location.country.name}',
                     ),
                     trailing: const Icon(Icons.push_pin_outlined),
                   ),
