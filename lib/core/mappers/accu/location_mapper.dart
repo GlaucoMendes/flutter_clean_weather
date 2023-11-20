@@ -1,4 +1,4 @@
-import 'package:flutter_clean_weather/data/dtos/location_dto.dart';
+import 'package:flutter_clean_weather/data/dtos/accu/location_dto.dart';
 import 'package:flutter_clean_weather/domain/entities/location.dart';
 
 class LocationMapper {

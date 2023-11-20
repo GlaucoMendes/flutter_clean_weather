@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/core/mappers/current_condition_mapper.dart';
+import 'package:flutter_clean_weather/core/mappers/accu/current_condition_mapper.dart';
 import 'package:flutter_clean_weather/data/datasources/remote/weather_remote_datasource.dart';
-import 'package:flutter_clean_weather/data/dtos/current_condition_dto.dart';
+import 'package:flutter_clean_weather/data/dtos/accu/current_condition_dto.dart';
 import 'package:flutter_clean_weather/data/repositories/weather_repository.dart';
 import 'package:flutter_clean_weather/data/repositories/weather_repository_impl.dart';
 import 'package:flutter_clean_weather/domain/entities/current_condition.dart';

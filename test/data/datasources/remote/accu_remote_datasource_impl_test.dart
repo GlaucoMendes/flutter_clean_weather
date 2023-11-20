@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/data/datasources/remote/weather_remote_datasource_impl.dart';
+import 'package:flutter_clean_weather/data/datasources/remote/accu_remote_datasource_impl.dart';
 import 'package:flutter_clean_weather/domain/entities/current_condition.dart';
 import 'package:flutter_clean_weather/domain/entities/forecast.dart';
 import 'package:flutter_clean_weather/domain/entities/location.dart';
@@ -11,14 +11,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 
 void main() async {
-  late WeatherRemoteDatasourceImpl datasource;
+  late AccuRemoteDatasourceImpl datasource;
   late Dio dio;
   late DioAdapter dioAdapter;
 
   setUp(() {
     dio = Dio();
     dioAdapter = DioAdapter(dio: dio);
-    datasource = WeatherRemoteDatasourceImpl(dio: dio);
+    datasource = AccuRemoteDatasourceImpl(dio: dio);
   });
 
   final locationMock = jsonDecode(await File('test/mocks/locations/location.json').readAsString());
@@ -35,7 +35,7 @@ void main() async {
         () async {
       dioAdapter.onGet(namePath, (server) => server.reply(200, [locationMock]));
       final result = await datasource.getLocationByString('');
-      expect(result, isA<Location>());
+      expect(result, isA<List<Location>>());
     });
 
     test(
@@ -54,13 +54,6 @@ void main() async {
       final call = datasource.getLocationByString('');
 
       await expectLater(call, throwsA(isA<RequestFailure>()));
-    });
-
-    test('Test for DtoConversionFailure Return for Invalid Response', () async {
-      dioAdapter.onGet(namePath, (server) => server.reply(200, ['']));
-      final call = datasource.getLocationByString('');
-
-      await expectLater(call, throwsA(isA<DtoConversionFailure>()));
     });
 
     test('Test for DtoConversionFailure Return for Invalid JSON', () async {

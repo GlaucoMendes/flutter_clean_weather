@@ -1,6 +1,6 @@
 import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/core/mappers/icon_mapper.dart';
-import 'package:flutter_clean_weather/data/dtos/forecast_dto.dart';
+import 'package:flutter_clean_weather/core/mappers/accu/icon_mapper.dart';
+import 'package:flutter_clean_weather/data/dtos/accu/forecast_dto.dart';
 import 'package:flutter_clean_weather/domain/entities/forecast.dart';
 
 class ForecastMapper {

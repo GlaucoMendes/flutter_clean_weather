@@ -2,19 +2,19 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/core/mappers/location_mapper.dart';
-import 'package:flutter_clean_weather/data/datasources/remote/weather_remote_datasource_impl.dart';
-import 'package:flutter_clean_weather/data/dtos/location_dto.dart';
+import 'package:flutter_clean_weather/core/mappers/accu/location_mapper.dart';
+import 'package:flutter_clean_weather/data/datasources/remote/accu_remote_datasource_impl.dart';
+import 'package:flutter_clean_weather/data/dtos/accu/location_dto.dart';
 import 'package:flutter_clean_weather/data/repositories/weather_repository_impl.dart';
 import 'package:flutter_clean_weather/domain/entities/location.dart';
 import 'package:flutter_clean_weather/domain/usecases/locations/get_location_by_geoposition_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockWeatherDatasource extends Mock implements WeatherRemoteDatasourceImpl {}
+class MockWeatherDatasource extends Mock implements AccuRemoteDatasourceImpl {}
 
 void main() async {
-  late WeatherRemoteDatasourceImpl datasource;
+  late AccuRemoteDatasourceImpl datasource;
   late WeatherRepositoryImpl weatherRepository;
   late GetLocationByGeoPositionUsecase usecase;
 

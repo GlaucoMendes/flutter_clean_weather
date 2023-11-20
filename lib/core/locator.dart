@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_clean_weather/core/core.dart';
+import 'package:flutter_clean_weather/data/datasources/remote/accu_remote_datasource_impl.dart';
 import 'package:flutter_clean_weather/data/datasources/remote/weather_remote_datasource.dart';
-import 'package:flutter_clean_weather/data/datasources/remote/weather_remote_datasource_impl.dart';
 import 'package:flutter_clean_weather/data/repositories/weather_repository.dart';
 import 'package:flutter_clean_weather/data/repositories/weather_repository_impl.dart';
 import 'package:flutter_clean_weather/domain/usecases/conditions/get_current_condition_usecase.dart';
@@ -21,7 +21,7 @@ class Locator {
   }
 
   static void _registerDatasources() {
-    _getIt.registerLazySingleton<WeatherRemoteDatasource>(() => WeatherRemoteDatasourceImpl(dio: _getIt.dio.accu));
+    _getIt.registerLazySingleton<WeatherRemoteDatasource>(() => AccuRemoteDatasourceImpl(dio: _getIt.dio.accu));
   }
 
   static void _registerRepositories() {

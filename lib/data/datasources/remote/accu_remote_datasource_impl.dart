@@ -1,19 +1,19 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/core/mappers/current_condition_mapper.dart';
-import 'package:flutter_clean_weather/core/mappers/forecast_mapper.dart';
-import 'package:flutter_clean_weather/core/mappers/location_mapper.dart';
+import 'package:flutter_clean_weather/core/mappers/accu/current_condition_mapper.dart';
+import 'package:flutter_clean_weather/core/mappers/accu/forecast_mapper.dart';
+import 'package:flutter_clean_weather/core/mappers/accu/location_mapper.dart';
 import 'package:flutter_clean_weather/data/datasources/remote/weather_remote_datasource.dart';
-import 'package:flutter_clean_weather/data/dtos/current_condition_dto.dart';
-import 'package:flutter_clean_weather/data/dtos/forecast_dto.dart';
-import 'package:flutter_clean_weather/data/dtos/location_dto.dart';
+import 'package:flutter_clean_weather/data/dtos/accu/current_condition_dto.dart';
+import 'package:flutter_clean_weather/data/dtos/accu/forecast_dto.dart';
+import 'package:flutter_clean_weather/data/dtos/accu/location_dto.dart';
 import 'package:flutter_clean_weather/domain/entities/current_condition.dart';
 import 'package:flutter_clean_weather/domain/entities/forecast.dart';
 import 'package:flutter_clean_weather/domain/entities/location.dart';
 
-class WeatherRemoteDatasourceImpl implements WeatherRemoteDatasource {
+class AccuRemoteDatasourceImpl implements WeatherRemoteDatasource {
   final Dio dio;
-  WeatherRemoteDatasourceImpl({required this.dio});
+  AccuRemoteDatasourceImpl({required this.dio});
 
   @override
   Future<List<Location>> getLocationByString(String text) async {
