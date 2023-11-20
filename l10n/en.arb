@@ -8,5 +8,12 @@
       }
     }
   },
-  "today": "Today"
+  "today": "Today",
+  "selectLocation": "Select a location",
+  "currentLocation": "Current Location",
+  "searchLocation": "Search Location",
+  "locationPermissionDenied": "Location permission denied",
+  "waitingGPS": "Waiting for GPS...",
+  "next": "Next",
+  "searchLocationBy": "City, State, or Country"
 }

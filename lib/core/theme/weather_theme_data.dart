@@ -11,5 +11,19 @@ class WeatherThemeData {
       onPrimary: Colors.white,
       secondary: Color(0xFF323232),
     ),
+    buttonTheme: const ButtonThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+    ),
+    filledButtonTheme: FilledButtonThemeData(
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10), // Defina o raio desejado aqui
+          ),
+        ),
+      ),
+    ),
   );
 }

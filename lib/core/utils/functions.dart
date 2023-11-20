@@ -7,3 +7,9 @@ T safeFromJson<T>(Map<String, dynamic> json, T Function(Map<String, dynamic>) fr
     throw DtoConversionFailure();
   }
 }
+
+void waitFrame(VoidCallback callback) {
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    callback();
+  });
+}
