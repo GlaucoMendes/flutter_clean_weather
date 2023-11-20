@@ -31,7 +31,6 @@ import 'package:flutter_clean_weather/presentation/home/cubits/forecast/forecast
 import 'package:flutter_clean_weather/presentation/home/home_screen.dart';
 import 'package:flutter_clean_weather/presentation/home/widgets/current_condition_widget.dart';
 import 'package:flutter_clean_weather/presentation/home/widgets/forecast_widget.dart';
-import 'package:flutter_clean_weather/presentation/onboarding/cubit/location_cubit.dart';
 import 'package:flutter_clean_weather/presentation/onboarding/onboarding_screen.dart';
 import 'package:flutter_clean_weather/presentation/onboarding/pages/search_location_page.dart';
 import 'package:flutter_clean_weather/presentation/onboarding/widgets/location_button_widget.dart';

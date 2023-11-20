@@ -42,7 +42,7 @@ class Locator {
         baseUrl: 'https://dataservice.accuweather.com',
         queryParameters: {
           // TODO(Glauco): Move this to a config file
-          'apikey': 'VxPgtGQJBfQOfCm1wzQswyYAdEOnYR1D',
+          'apikey': 'G02RRIZs8fE6Smw83FMrFQTFBb8cqsv4',
         },
       ),
     );

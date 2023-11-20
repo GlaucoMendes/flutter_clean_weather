@@ -6,10 +6,13 @@ import 'package:flutter_clean_weather/core/core.dart';
 import 'package:flutter_clean_weather/core/services/geoposition_service.dart';
 import 'package:flutter_clean_weather/core/services/permission_service.dart';
 import 'package:flutter_clean_weather/core/utils/snacks.dart';
+import 'package:flutter_clean_weather/domain/entities/location.dart';
 import 'package:flutter_clean_weather/presentation/home/home_screen.dart';
-import 'package:flutter_clean_weather/presentation/onboarding/cubit/location_cubit.dart';
+import 'package:flutter_clean_weather/presentation/onboarding/cubits/location/location_cubit.dart';
+import 'package:flutter_clean_weather/presentation/onboarding/cubits/location_list/location_list_cubit.dart';
 import 'package:flutter_clean_weather/presentation/onboarding/pages/search_location_page.dart';
 import 'package:flutter_clean_weather/presentation/onboarding/widgets/location_button_widget.dart';
+import 'package:get_it/get_it.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -21,6 +24,8 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   late LocationCubit cubit;
 
+  Location? currentLocation;
+
   @override
   void initState() {
     super.initState();
@@ -29,6 +34,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final location = currentLocation;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Clean Weather'),
@@ -70,42 +76,54 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               label: context.l10n.searchLocation,
               icon: Icons.search,
               onTap: () async {
-                await Navigator.of(context)
-                    .push(MaterialPageRoute<dynamic>(builder: (_) => const SearchLocationPage()));
+                final location = await Navigator.of(context).push(
+                  MaterialPageRoute<Location>(
+                    builder: (_) => BlocProvider(
+                      create: (context) => LocationListCubit(GetIt.I()),
+                      child: const SearchLocationPage(),
+                    ),
+                  ),
+                );
+                if (location != null) setState(() => currentLocation = location);
               },
             ),
             const SizedBox(height: 16),
-            BlocBuilder<LocationCubit, LocationState>(
-              builder: (context, state) {
-                if (state is LocationSuccessState) {
-                  // Location Info
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      // Text(context.l10n.locationInfo, style: Theme.of(context).textTheme.titleMedium),
-                      const SizedBox(height: 16),
-                      Text(state.location.localizedName, style: Theme.of(context).textTheme.labelLarge),
-                      const SizedBox(height: 8),
-                      Text(state.location.country.localizedName, style: Theme.of(context).textTheme.labelMedium),
-                      const SizedBox(height: 16),
-                      FilledButton(
-                        onPressed: () => unawaited(
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => HomeScreen(location: state.location),
-                            ),
-                          ),
+            if (location != null)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  ListTile(
+                    title: Text(location.localizedName),
+                    subtitle: Text(
+                      '${location.administrativeArea.localizedName} (${location.administrativeArea.id}) - ${location.country.localizedName}',
+                    ),
+                    trailing: const Icon(Icons.push_pin_outlined),
+                  ),
+                  const SizedBox(height: 8),
+                  FilledButton(
+                    onPressed: () => unawaited(
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (_) => HomeScreen(location: location),
                         ),
-                        style: FilledButton.styleFrom(
-                          backgroundColor: Theme.of(context).colorScheme.secondary,
-                        ),
-                        child: Text(context.l10n.next),
                       ),
-                    ],
-                  );
+                    ),
+                    style: FilledButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.secondary,
+                    ),
+                    child: Text(context.l10n.next),
+                  ),
+                ],
+              ),
+            BlocListener<LocationCubit, LocationState>(
+              listener: (context, state) {
+                if (state is LocationSuccessState) {
+                  setState(() => currentLocation = state.location);
+                } else if (state is LocationErrorState) {
+                  Snacks.show(context, FailureMapper.map(state.failure));
                 }
-                return const SizedBox();
               },
+              child: const SizedBox(),
             ),
           ],
         ),

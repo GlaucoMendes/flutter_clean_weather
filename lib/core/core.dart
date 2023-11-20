@@ -14,6 +14,7 @@ part 'extensions/get_it_extension.dart';
 part 'extensions/string_extension.dart';
 part 'failures/data_failures.dart';
 part 'failures/failures.dart';
+part 'failures/failures_mapper.dart';
 part 'global.dart';
 part 'utils/dialogs.dart';
 part 'utils/functions.dart';

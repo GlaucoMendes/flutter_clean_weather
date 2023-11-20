@@ -15,5 +15,6 @@
   "locationPermissionDenied": "Location permission denied",
   "waitingGPS": "Waiting for GPS...",
   "next": "Next",
-  "searchLocationBy": "City, State, or Country"
+  "searchLocationBy": "City, State, or Country",
+  "search": "Search"
 }
