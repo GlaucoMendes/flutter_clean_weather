@@ -7,7 +7,7 @@ class GetLocationByStringUsecase {
 
   GetLocationByStringUsecase({required this.repository});
 
-  Future<Result<Location, Failure>> call(String text) {
+  Future<Result<List<Location>, Failure>> call(String text) {
     return repository.getLocationByString(text);
   }
 }

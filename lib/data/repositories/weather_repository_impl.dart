@@ -28,7 +28,7 @@ class WeatherRepositoryImpl implements WeatherRepository {
   }
 
   @override
-  Future<Result<Location, Failure>> getLocationByString(String text) async {
+  Future<Result<List<Location>, Failure>> getLocationByString(String text) async {
     return _execute(() => remoteDatasource.getLocationByString(text));
   }
 

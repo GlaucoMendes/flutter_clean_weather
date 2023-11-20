@@ -32,12 +32,12 @@ void main() async {
         'Checks if the GetLocationByStringUsecase successfully returns a Location instance when valid data is provided by the WeatherRemoteDatasource.',
         () async {
       when(() => weatherRemoteDatasource.getLocationByString(any())).thenAnswer(
-        (_) async => LocationMapper.fromDTO(locationDTO),
+        (_) async => [LocationMapper.fromDTO(locationDTO)],
       );
       final result = await usecase.call('');
 
       expect(result.isSuccess(), true);
-      expect(result.tryGetSuccess(), isA<Location>());
+      expect(result.tryGetSuccess(), isA<List<Location>>());
       verify(() => weatherRemoteDatasource.getLocationByString(any())).called(1);
       verifyNoMoreInteractions(weatherRemoteDatasource);
     });

@@ -10,6 +10,7 @@ import 'package:flutter_clean_weather/core/mappers/location_mapper.dart';
 import 'package:flutter_clean_weather/core/services/geoposition_service.dart';
 import 'package:flutter_clean_weather/core/services/permission_service.dart';
 import 'package:flutter_clean_weather/core/theme/weather_theme_data.dart';
+import 'package:flutter_clean_weather/core/utils/snacks.dart';
 import 'package:flutter_clean_weather/data/datasources/remote/weather_remote_datasource.dart';
 import 'package:flutter_clean_weather/data/datasources/remote/weather_remote_datasource_impl.dart';
 import 'package:flutter_clean_weather/data/dtos/current_condition_dto.dart';
@@ -30,5 +31,9 @@ import 'package:flutter_clean_weather/presentation/home/cubits/forecast/forecast
 import 'package:flutter_clean_weather/presentation/home/home_screen.dart';
 import 'package:flutter_clean_weather/presentation/home/widgets/current_condition_widget.dart';
 import 'package:flutter_clean_weather/presentation/home/widgets/forecast_widget.dart';
+import 'package:flutter_clean_weather/presentation/onboarding/cubit/location_cubit.dart';
+import 'package:flutter_clean_weather/presentation/onboarding/onboarding_screen.dart';
+import 'package:flutter_clean_weather/presentation/onboarding/pages/search_location_page.dart';
+import 'package:flutter_clean_weather/presentation/onboarding/widgets/location_button_widget.dart';
 
 void main() {}
