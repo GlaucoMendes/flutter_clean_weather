@@ -6,12 +6,12 @@ import 'package:flutter_clean_weather/domain/usecases/forecast/get_forecast_by_i
 part 'forecast_state.dart';
 
 class ForecastCubit extends Cubit<ForecastState> {
-  final GetForecastByIdUsecase usecase;
-  ForecastCubit(this.usecase) : super(ForecastInitialState());
+  final GetForecastByIdUsecase _getForecastByIdUsecase;
+  ForecastCubit(this._getForecastByIdUsecase) : super(ForecastInitialState());
 
   Future<void> getForecastById(String id) async {
     emit(ForecastLoadingState());
-    final result = await usecase(id);
+    final result = await _getForecastByIdUsecase(id);
     result.when(
       (forecast) => emit(ForecastSuccessState(forecast)),
       (failure) => emit(ForecastErrorState(failure)),

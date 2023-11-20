@@ -6,12 +6,12 @@ import 'package:flutter_clean_weather/domain/usecases/conditions/get_current_con
 part 'current_condition_state.dart';
 
 class CurrentConditionCubit extends Cubit<CurrentConditionState> {
-  final GetCurrentConditionUsecase usecase;
-  CurrentConditionCubit(this.usecase) : super(CurrentConditionInitialState());
+  final GetCurrentConditionUsecase _getCurrentConditionUsecase;
+  CurrentConditionCubit(this._getCurrentConditionUsecase) : super(CurrentConditionInitialState());
 
   Future<void> getCurrentCondition(String id) async {
     emit(CurrentConditionLoadingState());
-    final result = await usecase(id);
+    final result = await _getCurrentConditionUsecase(id);
     result.when(
       (condition) => emit(CurrentConditionSuccessState(condition)),
       (failure) => emit(CurrentConditionErrorState(failure)),
