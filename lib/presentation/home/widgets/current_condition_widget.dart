@@ -30,13 +30,13 @@ class _CurrentConditionSuccessWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final weatherIcon = condition.weatherIcon;
+    final assetIcon = condition.assetIcon;
     return Column(
       children: [
-        if (condition.weatherIcon != null)
-          Lottie.asset(
-            condition.weatherIcon!.asset,
-            height: 100,
-          ),
+        if (weatherIcon != null) Lottie.asset(weatherIcon.asset, height: 100),
+        if (assetIcon != null) Image.asset(assetIcon, height: 100, fit: BoxFit.fill),
+        const SizedBox(height: 8),
         Text(condition.weatherText, style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 8),
         Text(condition.temperature.fahrenheitToCelsius(), style: Theme.of(context).textTheme.titleLarge),

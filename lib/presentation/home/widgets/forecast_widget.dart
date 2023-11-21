@@ -51,6 +51,11 @@ class _ForecastSuccessWidget extends StatelessWidget {
             itemCount: forecast.dailyForecasts.length,
             itemBuilder: (context, index) {
               final day = forecast.dailyForecasts[index];
+              final iconDay = day.iconDay;
+              final iconNight = day.iconNight;
+              final assetIconDay = day.assetIconDay;
+              final assetIconNight = day.assetIconNight;
+
               return Row(
                 children: [
                   const Spacer(),
@@ -66,13 +71,8 @@ class _ForecastSuccessWidget extends StatelessWidget {
                   const SizedBox(width: 16),
                   Row(
                     children: [
-                      if (day.iconDay != null)
-                        Lottie.asset(
-                          day.iconDay!.asset,
-                          width: 32,
-                          height: 32,
-                          fit: BoxFit.cover,
-                        ),
+                      if (iconDay != null) Lottie.asset(iconDay.asset, width: 32, height: 32, fit: BoxFit.cover),
+                      if (assetIconDay != null) Image.asset(assetIconDay, width: 32, height: 32, fit: BoxFit.cover),
                       const SizedBox(width: 8),
                       Text(day.maxTemp.fahrenheitToCelsius()),
                       const SizedBox(width: 8),
@@ -80,13 +80,8 @@ class _ForecastSuccessWidget extends StatelessWidget {
                       const SizedBox(width: 8),
                       Text(day.minTemp.fahrenheitToCelsius()),
                       const SizedBox(width: 8),
-                      if (day.iconNight != null)
-                        Lottie.asset(
-                          day.iconNight!.asset,
-                          width: 32,
-                          height: 32,
-                          fit: BoxFit.cover,
-                        ),
+                      if (iconNight != null) Lottie.asset(iconNight.asset, width: 32, height: 32, fit: BoxFit.cover),
+                      if (assetIconNight != null) Image.asset(assetIconNight, width: 32, height: 32, fit: BoxFit.cover),
                     ],
                   ),
                   const Spacer(flex: 2),

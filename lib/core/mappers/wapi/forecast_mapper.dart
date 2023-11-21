@@ -1,5 +1,4 @@
 import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/core/enums/weather_icons_enum.dart';
 import 'package:flutter_clean_weather/data/dtos/wapi/forecast_dto.dart';
 import 'package:flutter_clean_weather/domain/entities/forecast.dart';
 
@@ -12,11 +11,16 @@ class ForecastMapper {
               date: e.date.toTimeZone,
               minTemp: e.day.mintempF,
               maxTemp: e.day.maxtempF,
-              iconDay: WeatherIcons.cloudyNight,
-              iconNight: WeatherIcons.cloudyNight,
+              assetIconDay: 'assets/wapi_icons/day/${_getCode(e.day.condition.icon)}',
+              assetIconNight: 'assets/wapi_icons/night/${_getCode(e.day.condition.icon)}',
             ),
           )
           .toList(),
     );
+  }
+
+  static String _getCode(String url) {
+    final split = url.split('/');
+    return split[split.length - 1];
   }
 }
