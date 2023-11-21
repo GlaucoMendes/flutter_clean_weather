@@ -1,3 +1,5 @@
+import 'package:device_preview_screenshot/device_preview_screenshot.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -13,7 +15,16 @@ import 'presentation/onboarding/onboarding_screen.dart';
 
 void main() {
   Locator.init();
-  runApp(const MainApp());
+  runApp(
+    DevicePreview(
+      enabled: kIsWeb,
+      builder: (context) => const MainApp(),
+      tools: const [
+        ...DevicePreview.defaultTools,
+        DevicePreviewScreenshot(),
+      ],
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {

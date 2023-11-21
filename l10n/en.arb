@@ -22,7 +22,7 @@
   "search": "Search",
   "welcome": "Welcome",
   "selectLanguage": "Select a language",
-  "selectApi": "SelecwapiDescriptiont an API",
+  "selectApi": "Select an API",
   "accuDescription": "50 requests per day",
   "wapiDescription": "1 million requests per month"
 }
