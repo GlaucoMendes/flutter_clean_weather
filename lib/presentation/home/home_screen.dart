@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_clean_weather/domain/entities/location.dart';
-import 'package:flutter_clean_weather/presentation/home/cubits/condition/current_condition_cubit.dart';
-import 'package:flutter_clean_weather/presentation/home/cubits/forecast/forecast_cubit.dart';
-import 'package:flutter_clean_weather/presentation/home/widgets/current_condition_widget.dart';
-import 'package:flutter_clean_weather/presentation/home/widgets/forecast_widget.dart';
+import '../../domain/entities/location.dart';
+import 'cubits/condition/current_condition_cubit.dart';
+import 'cubits/forecast/forecast_cubit.dart';
+import 'widgets/current_condition_widget.dart';
+import 'widgets/forecast_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   final Location location;

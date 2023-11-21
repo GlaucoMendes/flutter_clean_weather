@@ -1,6 +1,6 @@
-import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/data/repositories/weather_repository.dart';
-import 'package:flutter_clean_weather/domain/entities/location.dart';
+import '../../../core/core.dart';
+import '../../../data/repositories/weather_repository.dart';
+import '../../entities/location.dart';
 
 class GetLocationByGeoPositionUsecase {
   final WeatherRepository repository;

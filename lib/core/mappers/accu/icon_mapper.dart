@@ -1,4 +1,4 @@
-import 'package:flutter_clean_weather/core/enums/weather_icons_enum.dart';
+import '../../enums/weather_icons_enum.dart';
 
 class IconMapper {
   static WeatherIcons? codeToIcon(int code) {

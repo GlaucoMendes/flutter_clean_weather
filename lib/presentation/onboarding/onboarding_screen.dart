@@ -2,18 +2,19 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/core/services/geoposition_service.dart';
-import 'package:flutter_clean_weather/core/services/permission_service.dart';
-import 'package:flutter_clean_weather/core/utils/snacks.dart';
-import 'package:flutter_clean_weather/domain/entities/location.dart';
-import 'package:flutter_clean_weather/presentation/home/home_screen.dart';
-import 'package:flutter_clean_weather/presentation/onboarding/cubits/location/location_cubit.dart';
-import 'package:flutter_clean_weather/presentation/onboarding/cubits/location_list/location_list_cubit.dart';
-import 'package:flutter_clean_weather/presentation/onboarding/pages/search_location_page.dart';
-import 'package:flutter_clean_weather/presentation/onboarding/widgets/location_button_widget.dart';
-import 'package:flutter_clean_weather/presentation/onboarding/widgets/location_tile.dart';
 import 'package:get_it/get_it.dart';
+
+import '../../core/core.dart';
+import '../../core/services/geoposition_service.dart';
+import '../../core/services/permission_service.dart';
+import '../../core/utils/snacks.dart';
+import '../../domain/entities/location.dart';
+import '../home/home_screen.dart';
+import 'cubits/location/location_cubit.dart';
+import 'cubits/location_list/location_list_cubit.dart';
+import 'pages/search_location_page.dart';
+import 'widgets/location_button_widget.dart';
+import 'widgets/location_tile.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});

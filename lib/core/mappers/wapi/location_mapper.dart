@@ -1,5 +1,5 @@
-import 'package:flutter_clean_weather/data/dtos/wapi/location_dto.dart';
-import 'package:flutter_clean_weather/domain/entities/location.dart';
+import '../../../data/dtos/wapi/location_dto.dart';
+import '../../../domain/entities/location.dart';
 
 class LocationMapper {
   static Location fromDTO(LocationDTO dto) {

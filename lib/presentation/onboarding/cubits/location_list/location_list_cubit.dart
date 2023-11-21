@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/domain/entities/location.dart';
-import 'package:flutter_clean_weather/domain/usecases/locations/get_location_by_string_usecase.dart';
+import '../../../../core/core.dart';
+import '../../../../domain/entities/location.dart';
+import '../../../../domain/usecases/locations/get_location_by_string_usecase.dart';
 
 part 'location_list_state.dart';
 

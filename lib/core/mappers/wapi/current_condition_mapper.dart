@@ -1,5 +1,5 @@
-import 'package:flutter_clean_weather/data/dtos/wapi/current_condition_dto.dart';
-import 'package:flutter_clean_weather/domain/entities/current_condition.dart';
+import '../../../data/dtos/wapi/current_condition_dto.dart';
+import '../../../domain/entities/current_condition.dart';
 
 class CurrentConditionMapper {
   static CurrentCondition fromDTO(CurrentConditionDTO dto) {

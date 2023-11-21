@@ -1,6 +1,6 @@
-import 'package:flutter_clean_weather/domain/entities/current_condition.dart';
-import 'package:flutter_clean_weather/domain/entities/forecast.dart';
-import 'package:flutter_clean_weather/domain/entities/location.dart';
+import '../../../domain/entities/current_condition.dart';
+import '../../../domain/entities/forecast.dart';
+import '../../../domain/entities/location.dart';
 
 abstract class WeatherRemoteDatasource {
   Future<List<Location>> getLocationByString(String text);

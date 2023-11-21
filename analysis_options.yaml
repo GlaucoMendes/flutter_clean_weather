@@ -8,6 +8,7 @@ analyzer:
     avoid_print: warning
 linter:
   rules:
+    always_use_package_imports: false
     one_member_abstracts: false
     public_member_api_docs: false
     avoid_empty_else: true
@@ -28,7 +29,7 @@ linter:
     no_adjacent_strings_in_list: true
     no_duplicate_case_values: true
     no_logic_in_create_state: true
-    prefer_relative_imports: false
+    prefer_relative_imports: true
     prefer_void_to_null: true
     test_types_in_equals: true
     throw_in_finally: true

@@ -1,7 +1,7 @@
-import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/core/mappers/accu/icon_mapper.dart';
-import 'package:flutter_clean_weather/data/dtos/accu/forecast_dto.dart';
-import 'package:flutter_clean_weather/domain/entities/forecast.dart';
+import '../../../data/dtos/accu/forecast_dto.dart';
+import '../../../domain/entities/forecast.dart';
+import '../../core.dart';
+import 'icon_mapper.dart';
 
 class ForecastMapper {
   static Forecast fromDTO(ForecastDTO dto) {

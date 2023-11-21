@@ -1,9 +1,9 @@
-import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/data/datasources/remote/weather_remote_datasource.dart';
-import 'package:flutter_clean_weather/data/repositories/weather_repository.dart';
-import 'package:flutter_clean_weather/domain/entities/current_condition.dart';
-import 'package:flutter_clean_weather/domain/entities/forecast.dart';
-import 'package:flutter_clean_weather/domain/entities/location.dart';
+import '../../core/core.dart';
+import '../../domain/entities/current_condition.dart';
+import '../../domain/entities/forecast.dart';
+import '../../domain/entities/location.dart';
+import '../datasources/remote/weather_remote_datasource.dart';
+import 'weather_repository.dart';
 
 class WeatherRepositoryImpl implements WeatherRepository {
   final WeatherRemoteDatasource remoteDatasource;

@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/presentation/onboarding/cubits/location_list/location_list_cubit.dart';
-import 'package:flutter_clean_weather/presentation/onboarding/widgets/location_tile.dart';
+import '../../../core/core.dart';
+import '../cubits/location_list/location_list_cubit.dart';
+import '../widgets/location_tile.dart';
 
 class SearchLocationPage extends StatefulWidget {
   const SearchLocationPage({super.key});

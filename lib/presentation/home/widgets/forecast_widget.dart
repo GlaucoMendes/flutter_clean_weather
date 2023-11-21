@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/core/extensions/double_extension.dart';
-import 'package:flutter_clean_weather/domain/entities/forecast.dart';
-import 'package:flutter_clean_weather/presentation/home/cubits/forecast/forecast_cubit.dart';
 import 'package:lottie/lottie.dart';
+
+import '../../../core/core.dart';
+import '../../../core/extensions/double_extension.dart';
+import '../../../domain/entities/forecast.dart';
+import '../cubits/forecast/forecast_cubit.dart';
 
 class ForecastWidget extends StatelessWidget {
   const ForecastWidget({super.key});
@@ -33,7 +34,7 @@ class _ForecastSuccessWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.secondary,
         borderRadius: BorderRadius.circular(16),

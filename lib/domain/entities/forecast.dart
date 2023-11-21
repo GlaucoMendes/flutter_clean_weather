@@ -1,4 +1,4 @@
-import 'package:flutter_clean_weather/core/enums/weather_icons_enum.dart';
+import '../../core/enums/weather_icons_enum.dart';
 
 class Forecast {
   final List<DailyForecast> dailyForecasts;

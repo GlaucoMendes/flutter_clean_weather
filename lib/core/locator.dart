@@ -1,15 +1,16 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/data/datasources/remote/accu_remote_datasource_impl.dart';
-import 'package:flutter_clean_weather/data/datasources/remote/wapi_remote_datasource_impl.dart';
-import 'package:flutter_clean_weather/data/datasources/remote/weather_remote_datasource.dart';
-import 'package:flutter_clean_weather/data/repositories/weather_repository.dart';
-import 'package:flutter_clean_weather/data/repositories/weather_repository_impl.dart';
-import 'package:flutter_clean_weather/domain/usecases/conditions/get_current_condition_usecase.dart';
-import 'package:flutter_clean_weather/domain/usecases/forecast/get_forecast_by_id_usecase.dart';
-import 'package:flutter_clean_weather/domain/usecases/locations/get_location_by_geoposition_usecase.dart';
-import 'package:flutter_clean_weather/domain/usecases/locations/get_location_by_string_usecase.dart';
 import 'package:get_it/get_it.dart';
+
+import '../data/datasources/remote/accu_remote_datasource_impl.dart';
+import '../data/datasources/remote/wapi_remote_datasource_impl.dart';
+import '../data/datasources/remote/weather_remote_datasource.dart';
+import '../data/repositories/weather_repository.dart';
+import '../data/repositories/weather_repository_impl.dart';
+import '../domain/usecases/conditions/get_current_condition_usecase.dart';
+import '../domain/usecases/forecast/get_forecast_by_id_usecase.dart';
+import '../domain/usecases/locations/get_location_by_geoposition_usecase.dart';
+import '../domain/usecases/locations/get_location_by_string_usecase.dart';
+import 'core.dart';
 
 class Locator {
   Locator._();

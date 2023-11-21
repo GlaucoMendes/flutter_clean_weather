@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_clean_weather/core/extensions/double_extension.dart';
-import 'package:flutter_clean_weather/domain/entities/current_condition.dart';
-import 'package:flutter_clean_weather/presentation/home/cubits/condition/current_condition_cubit.dart';
 import 'package:lottie/lottie.dart';
+
+import '../../../core/extensions/double_extension.dart';
+import '../../../domain/entities/current_condition.dart';
+import '../cubits/condition/current_condition_cubit.dart';
 
 class CurrentConditionWidget extends StatelessWidget {
   const CurrentConditionWidget({super.key});

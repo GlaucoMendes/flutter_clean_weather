@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_weather/domain/entities/location.dart';
+import '../../../domain/entities/location.dart';
 
 class LocationTile extends StatelessWidget {
   final Location location;

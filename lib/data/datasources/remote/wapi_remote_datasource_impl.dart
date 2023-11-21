@@ -1,15 +1,16 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/core/mappers/wapi/current_condition_mapper.dart';
-import 'package:flutter_clean_weather/core/mappers/wapi/forecast_mapper.dart';
-import 'package:flutter_clean_weather/core/mappers/wapi/location_mapper.dart';
-import 'package:flutter_clean_weather/data/datasources/remote/weather_remote_datasource.dart';
-import 'package:flutter_clean_weather/data/dtos/wapi/current_condition_dto.dart';
-import 'package:flutter_clean_weather/data/dtos/wapi/forecast_dto.dart' as forecast;
-import 'package:flutter_clean_weather/data/dtos/wapi/location_dto.dart';
-import 'package:flutter_clean_weather/domain/entities/current_condition.dart';
-import 'package:flutter_clean_weather/domain/entities/forecast.dart';
-import 'package:flutter_clean_weather/domain/entities/location.dart';
+
+import '../../../core/core.dart';
+import '../../../core/mappers/wapi/current_condition_mapper.dart';
+import '../../../core/mappers/wapi/forecast_mapper.dart';
+import '../../../core/mappers/wapi/location_mapper.dart';
+import '../../../domain/entities/current_condition.dart';
+import '../../../domain/entities/forecast.dart';
+import '../../../domain/entities/location.dart';
+import '../../dtos/wapi/current_condition_dto.dart';
+import '../../dtos/wapi/forecast_dto.dart' as forecast;
+import '../../dtos/wapi/location_dto.dart';
+import 'weather_remote_datasource.dart';
 
 class WapiRemoteDatasourceImpl implements WeatherRemoteDatasource {
   final Dio dio;

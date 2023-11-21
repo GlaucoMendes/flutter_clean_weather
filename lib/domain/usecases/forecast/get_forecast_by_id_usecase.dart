@@ -1,6 +1,6 @@
-import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/data/repositories/weather_repository.dart';
-import 'package:flutter_clean_weather/domain/entities/forecast.dart';
+import '../../../core/core.dart';
+import '../../../data/repositories/weather_repository.dart';
+import '../../entities/forecast.dart';
 
 class GetForecastByIdUsecase {
   final WeatherRepository repository;

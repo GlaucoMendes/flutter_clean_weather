@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/domain/entities/forecast.dart';
-import 'package:flutter_clean_weather/domain/usecases/forecast/get_forecast_by_id_usecase.dart';
+import '../../../../core/core.dart';
+import '../../../../domain/entities/forecast.dart';
+import '../../../../domain/usecases/forecast/get_forecast_by_id_usecase.dart';
 
 part 'forecast_state.dart';
 

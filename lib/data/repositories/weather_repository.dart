@@ -1,7 +1,7 @@
-import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/domain/entities/current_condition.dart';
-import 'package:flutter_clean_weather/domain/entities/forecast.dart';
-import 'package:flutter_clean_weather/domain/entities/location.dart';
+import '../../core/core.dart';
+import '../../domain/entities/current_condition.dart';
+import '../../domain/entities/forecast.dart';
+import '../../domain/entities/location.dart';
 
 abstract class WeatherRepository {
   Future<Result<List<Location>, Failure>> getLocationByString(String text);
