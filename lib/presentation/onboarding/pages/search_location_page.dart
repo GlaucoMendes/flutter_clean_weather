@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_weather/core/core.dart';
 import 'package:flutter_clean_weather/presentation/onboarding/cubits/location_list/location_list_cubit.dart';
+import 'package:flutter_clean_weather/presentation/onboarding/widgets/location_tile.dart';
 
 class SearchLocationPage extends StatefulWidget {
   const SearchLocationPage({super.key});
@@ -66,13 +67,7 @@ class _SearchLocationPageState extends State<SearchLocationPage> {
                             return InkWell(
                               borderRadius: BorderRadius.circular(10),
                               onTap: () => Navigator.of(context).pop(location),
-                              child: ListTile(
-                                title: Text(location.name),
-                                subtitle: Text(
-                                  '${location.administrativeArea.name} (${location.administrativeArea.id}) - ${location.country.name}',
-                                ),
-                                trailing: const Icon(Icons.push_pin_outlined),
-                              ),
+                              child: LocationTile(location: location),
                             );
                           },
                         ),

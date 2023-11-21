@@ -25,7 +25,7 @@ void main() async {
     usecase = GetCurrentConditionUsecase(repository);
   });
 
-  final mock = await File('test/mocks/conditions/condition.json').readAsString();
+  final mock = await File('test/mocks/accu/conditions/condition.json').readAsString();
   final currentConditionDto = CurrentConditionDto.fromJson(jsonDecode(mock) as Map<String, dynamic>);
 
   group('Get CurrentCondition by GetCurrentConditionUsecase', () {});

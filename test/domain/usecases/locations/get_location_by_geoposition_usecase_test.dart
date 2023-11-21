@@ -18,7 +18,7 @@ void main() async {
   late WeatherRepositoryImpl weatherRepository;
   late GetLocationByGeoPositionUsecase usecase;
 
-  final mock = await File('test/mocks/locations/location.json').readAsString();
+  final mock = await File('test/mocks/accu/locations/location.json').readAsString();
   final locationDTO = LocationDTO.fromJson(jsonDecode(mock) as Map<String, dynamic>);
 
   setUp(() {

@@ -25,7 +25,7 @@ void main() async {
     usecase = GetForecastByIdUsecase(repository: repository);
   });
 
-  final mock = await File('test/mocks/forecasts/forecast.json').readAsString();
+  final mock = await File('test/mocks/accu/forecasts/forecast.json').readAsString();
   final forecastDTO = ForecastDTO.fromJson(jsonDecode(mock) as Map<String, dynamic>);
 
   group('Get Forecast by GetForecastByIdUsecase', () {

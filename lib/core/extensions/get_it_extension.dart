@@ -5,5 +5,6 @@ extension GetItExtension on GetIt {
 }
 
 class DioInstances {
-  Dio get accu => GetIt.I<Dio>(instanceName: 'accuwather');
+  Dio get accu => GetIt.I<Dio>(instanceName: 'accuweather');
+  Dio get wapi => GetIt.I<Dio>(instanceName: 'weatherapi');
 }

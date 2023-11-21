@@ -6,23 +6,10 @@ class LocationMapper {
     return Location(
       key: dto.key,
       name: dto.localizedName,
-      region: fromDTOCountry(dto.region),
-      country: fromDTOCountry(dto.country),
-      administrativeArea: fromDTOAdministrativeArea(dto.administrativeArea),
-    );
-  }
-
-  static Country fromDTOCountry(CountryDTO dto) {
-    return Country(
-      id: dto.id,
-      name: dto.localizedName,
-    );
-  }
-
-  static AdministrativeArea fromDTOAdministrativeArea(AdministrativeAreaDTO dto) {
-    return AdministrativeArea(
-      id: dto.id,
-      name: dto.localizedName,
+      region: dto.region.localizedName,
+      country: dto.country.localizedName,
+      area: dto.administrativeArea.localizedName,
+      areaId: dto.administrativeArea.id,
     );
   }
 }

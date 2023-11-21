@@ -12,6 +12,7 @@ import 'package:flutter_clean_weather/presentation/onboarding/cubits/location/lo
 import 'package:flutter_clean_weather/presentation/onboarding/cubits/location_list/location_list_cubit.dart';
 import 'package:flutter_clean_weather/presentation/onboarding/pages/search_location_page.dart';
 import 'package:flutter_clean_weather/presentation/onboarding/widgets/location_button_widget.dart';
+import 'package:flutter_clean_weather/presentation/onboarding/widgets/location_tile.dart';
 import 'package:get_it/get_it.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -92,13 +93,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  ListTile(
-                    title: Text(location.name),
-                    subtitle: Text(
-                      '${location.administrativeArea.name} (${location.administrativeArea.id}) - ${location.country.name}',
-                    ),
-                    trailing: const Icon(Icons.push_pin_outlined),
-                  ),
+                  LocationTile(location: location),
                   const SizedBox(height: 8),
                   FilledButton(
                     onPressed: () => unawaited(

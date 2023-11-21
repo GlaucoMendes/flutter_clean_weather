@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_clean_weather/core/core.dart';
 import 'package:flutter_clean_weather/data/datasources/remote/accu_remote_datasource_impl.dart';
+import 'package:flutter_clean_weather/data/datasources/remote/wapi_remote_datasource_impl.dart';
 import 'package:flutter_clean_weather/data/datasources/remote/weather_remote_datasource.dart';
 import 'package:flutter_clean_weather/data/repositories/weather_repository.dart';
 import 'package:flutter_clean_weather/data/repositories/weather_repository_impl.dart';
@@ -21,11 +22,21 @@ class Locator {
   }
 
   static void _registerDatasources() {
-    _getIt.registerLazySingleton<WeatherRemoteDatasource>(() => AccuRemoteDatasourceImpl(dio: _getIt.dio.accu));
+    _getIt
+      ..registerLazySingleton<WeatherRemoteDatasource>(
+        () => AccuRemoteDatasourceImpl(dio: _getIt.dio.accu),
+        instanceName: 'accuDatasource',
+      )
+      ..registerLazySingleton<WeatherRemoteDatasource>(
+        () => WapiRemoteDatasourceImpl(dio: _getIt.dio.wapi),
+        instanceName: 'wapiDatasource',
+      );
   }
 
   static void _registerRepositories() {
-    _getIt.registerLazySingleton<WeatherRepository>(() => WeatherRepositoryImpl(remoteDatasource: _getIt()));
+    _getIt.registerLazySingleton<WeatherRepository>(
+      () => WeatherRepositoryImpl(remoteDatasource: _getIt(instanceName: 'wapiDatasource')),
+    );
   }
 
   static void _registerUseCases() {
@@ -37,7 +48,7 @@ class Locator {
   }
 
   static void _registerDio() {
-    final dio = Dio(
+    final accuDio = Dio(
       BaseOptions(
         baseUrl: 'https://dataservice.accuweather.com',
         queryParameters: {
@@ -46,6 +57,17 @@ class Locator {
         },
       ),
     );
-    _getIt.registerLazySingleton<Dio>(() => dio, instanceName: 'accuwather');
+    final wapiDio = Dio(
+      BaseOptions(
+        baseUrl: 'http://api.weatherapi.com/v1/',
+        queryParameters: {
+          // TODO(Glauco): Move this to a config file
+          'key': '13e13b1293c348c1968230607231611',
+        },
+      ),
+    );
+    _getIt
+      ..registerLazySingleton<Dio>(() => accuDio, instanceName: 'accuweather')
+      ..registerLazySingleton<Dio>(() => wapiDio, instanceName: 'weatherapi');
   }
 }
