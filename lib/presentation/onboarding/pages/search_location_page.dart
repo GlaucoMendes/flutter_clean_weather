@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../core/core.dart';
 import '../cubits/location_list/location_list_cubit.dart';
 import '../widgets/location_tile.dart';

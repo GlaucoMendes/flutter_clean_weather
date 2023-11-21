@@ -16,5 +16,6 @@
   "waitingGPS": "Waiting for GPS...",
   "next": "Next",
   "searchLocationBy": "City, State, or Country",
-  "search": "Search"
+  "search": "Search",
+  "welcome": "Welcome"
 }

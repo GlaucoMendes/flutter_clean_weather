@@ -11,6 +11,7 @@ import '../domain/usecases/forecast/get_forecast_by_id_usecase.dart';
 import '../domain/usecases/locations/get_location_by_geoposition_usecase.dart';
 import '../domain/usecases/locations/get_location_by_string_usecase.dart';
 import 'core.dart';
+import 'enums/weather_api_enum.dart';
 
 class Locator {
   Locator._();
@@ -26,17 +27,17 @@ class Locator {
     _getIt
       ..registerLazySingleton<WeatherRemoteDatasource>(
         () => AccuRemoteDatasourceImpl(dio: _getIt.dio.accu),
-        instanceName: 'accuDatasource',
+        instanceName: WeatherApi.accuweather.instanceName,
       )
       ..registerLazySingleton<WeatherRemoteDatasource>(
         () => WapiRemoteDatasourceImpl(dio: _getIt.dio.wapi),
-        instanceName: 'wapiDatasource',
+        instanceName: WeatherApi.weatherapi.instanceName,
       );
   }
 
   static void _registerRepositories() {
     _getIt.registerLazySingleton<WeatherRepository>(
-      () => WeatherRepositoryImpl(remoteDatasource: _getIt(instanceName: 'wapiDatasource')),
+      () => WeatherRepositoryImpl(remoteDatasource: _getIt(instanceName: WeatherApi.weatherapi.instanceName)),
     );
   }
 
@@ -68,7 +69,14 @@ class Locator {
       ),
     );
     _getIt
-      ..registerLazySingleton<Dio>(() => accuDio, instanceName: 'accuweather')
-      ..registerLazySingleton<Dio>(() => wapiDio, instanceName: 'weatherapi');
+      ..registerLazySingleton<Dio>(() => accuDio, instanceName: WeatherApi.accuweather.instanceName)
+      ..registerLazySingleton<Dio>(() => wapiDio, instanceName: WeatherApi.weatherapi.instanceName);
+  }
+
+  static Future<void> updateWeatherRepository(WeatherApi api) async {
+    await _getIt.unregister<WeatherRepository>();
+    _getIt.registerLazySingleton<WeatherRepository>(
+      () => WeatherRepositoryImpl(remoteDatasource: _getIt(instanceName: api.instanceName)),
+    );
   }
 }
