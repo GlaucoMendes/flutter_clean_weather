@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/core/mappers/accu/forecast_mapper.dart';
 import 'package:flutter_clean_weather/data/datasources/remote/weather_remote_datasource.dart';
 import 'package:flutter_clean_weather/data/dtos/accu/forecast_dto.dart';
+import 'package:flutter_clean_weather/data/mappers/accu/forecast_mapper.dart';
 import 'package:flutter_clean_weather/data/repositories/weather_repository.dart';
 import 'package:flutter_clean_weather/data/repositories/weather_repository_impl.dart';
 import 'package:flutter_clean_weather/domain/entities/forecast.dart';

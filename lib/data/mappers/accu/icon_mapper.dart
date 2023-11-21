@@ -1,4 +1,4 @@
-import '../../enums/weather_icons_enum.dart';
+import '../../../core/enums/weather_icons_enum.dart';
 
 class IconMapper {
   static WeatherIcons? codeToIcon(int code) {

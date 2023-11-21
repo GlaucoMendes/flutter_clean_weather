@@ -1,5 +1,5 @@
-import '../../../data/dtos/wapi/current_condition_dto.dart';
 import '../../../domain/entities/current_condition.dart';
+import '../../dtos/wapi/current_condition_dto.dart';
 
 class CurrentConditionMapper {
   static CurrentCondition fromDTO(CurrentConditionDTO dto) {

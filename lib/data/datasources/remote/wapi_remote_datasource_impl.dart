@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
 
 import '../../../core/core.dart';
-import '../../../core/mappers/wapi/current_condition_mapper.dart';
-import '../../../core/mappers/wapi/forecast_mapper.dart';
-import '../../../core/mappers/wapi/location_mapper.dart';
 import '../../../domain/entities/current_condition.dart';
 import '../../../domain/entities/forecast.dart';
 import '../../../domain/entities/location.dart';
 import '../../dtos/wapi/current_condition_dto.dart';
 import '../../dtos/wapi/forecast_dto.dart' as forecast;
 import '../../dtos/wapi/location_dto.dart';
+import '../../mappers/wapi/current_condition_mapper.dart';
+import '../../mappers/wapi/forecast_mapper.dart';
+import '../../mappers/wapi/location_mapper.dart';
 import 'weather_remote_datasource.dart';
 
 class WapiRemoteDatasourceImpl implements WeatherRemoteDatasource {

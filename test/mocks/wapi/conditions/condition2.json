@@ -1,0 +1,41 @@
+{
+  "location": {
+      "name": "Fortaleza",
+      "region": "Ceara",
+      "country": "Brazil",
+      "lat": -3.32,
+      "lon": -41.42,
+      "tz_id": "America/Fortaleza",
+      "localtime_epoch": 1700526797,
+      "localtime": "2023-11-20 21:33"
+  },
+  "current": {
+      "last_updated_epoch": 1700526600,
+      "last_updated": "2023-11-20 21:30",
+      "temp_c": 25.0,
+      "temp_f": 77.1,
+      "is_day": 1,
+      "condition": {
+          "text": "Partly cloudy",
+          "icon": "//cdn.weatherapi.com/weather/64x64/night/116.png",
+          "code": 1003
+      },
+      "wind_mph": 7.6,
+      "wind_kph": 12.2,
+      "wind_degree": 57,
+      "wind_dir": "ENE",
+      "pressure_mb": 1011.0,
+      "pressure_in": 29.85,
+      "precip_mm": 0.0,
+      "precip_in": 0.0,
+      "humidity": 77,
+      "cloud": 29,
+      "feelslike_c": 27.0,
+      "feelslike_f": 80.6,
+      "vis_km": 10.0,
+      "vis_miles": 6.0,
+      "uv": 1.0,
+      "gust_mph": 11.7,
+      "gust_kph": 18.8
+  }
+}

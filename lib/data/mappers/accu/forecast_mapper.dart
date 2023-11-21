@@ -1,6 +1,6 @@
-import '../../../data/dtos/accu/forecast_dto.dart';
+import '../../../core/core.dart';
 import '../../../domain/entities/forecast.dart';
-import '../../core.dart';
+import '../../dtos/accu/forecast_dto.dart';
 import 'icon_mapper.dart';
 
 class ForecastMapper {

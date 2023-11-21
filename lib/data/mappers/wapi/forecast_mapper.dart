@@ -1,6 +1,6 @@
-import '../../../data/dtos/wapi/forecast_dto.dart';
+import '../../../core/core.dart';
 import '../../../domain/entities/forecast.dart';
-import '../../core.dart';
+import '../../dtos/wapi/forecast_dto.dart';
 
 class ForecastMapper {
   static Forecast fromDTO(ForecastDTO dto) {

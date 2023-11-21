@@ -1,5 +1,5 @@
-import '../../../data/dtos/accu/current_condition_dto.dart';
 import '../../../domain/entities/current_condition.dart';
+import '../../dtos/accu/current_condition_dto.dart';
 import 'icon_mapper.dart';
 
 class CurrentConditionMapper {

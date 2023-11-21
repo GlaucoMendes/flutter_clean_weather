@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_clean_weather/core/core.dart';
-import 'package:flutter_clean_weather/core/mappers/accu/location_mapper.dart';
 import 'package:flutter_clean_weather/data/datasources/remote/accu_remote_datasource_impl.dart';
 import 'package:flutter_clean_weather/data/dtos/accu/location_dto.dart';
+import 'package:flutter_clean_weather/data/mappers/accu/location_mapper.dart';
 import 'package:flutter_clean_weather/data/repositories/weather_repository_impl.dart';
 import 'package:flutter_clean_weather/domain/entities/location.dart';
 import 'package:flutter_clean_weather/domain/usecases/locations/get_location_by_geoposition_usecase.dart';

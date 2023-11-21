@@ -1,5 +1,5 @@
-import '../../../data/dtos/accu/location_dto.dart';
 import '../../../domain/entities/location.dart';
+import '../../dtos/accu/location_dto.dart';
 
 class LocationMapper {
   static Location fromDTO(LocationDTO dto) {

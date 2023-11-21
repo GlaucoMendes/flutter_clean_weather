@@ -27,6 +27,7 @@ void main() async {
   final forecastMock = jsonDecode(await File('test/mocks/wapi/forecasts/forecast.json').readAsString());
   final locationMock = jsonDecode(await File('test/mocks/wapi/locations/location.json').readAsString());
   final currentConditionMock = jsonDecode(await File('test/mocks/wapi/conditions/condition.json').readAsString());
+  final currentConditionMock2 = jsonDecode(await File('test/mocks/wapi/conditions/condition2.json').readAsString());
 
   group('GetLocationByString', () {
     test(
@@ -105,13 +106,19 @@ void main() async {
   });
   group('GetCurrentCondition', () {
     test(
-        'Verifies if the getCurrentCondition method returns a CurrentCondition instance when valid data is received from the API.',
+        'Verifies if the getCurrentCondition method returns a CurrentCondition (day) instance when valid data is received from the API.',
         () async {
       dioAdapter.onGet(currentConditionPath, (server) => server.reply(200, currentConditionMock));
       final result = await datasource.getCurrentCondition('');
       expect(result, isA<CurrentCondition>());
     });
-
+    test(
+        'Verifies if the getCurrentCondition method returns a CurrentCondition (night) instance when valid data is received from the API.',
+        () async {
+      dioAdapter.onGet(currentConditionPath, (server) => server.reply(200, currentConditionMock2));
+      final result = await datasource.getCurrentCondition('');
+      expect(result, isA<CurrentCondition>());
+    });
     test(
         'Confirms that an EmptyDataFailure is thrown when the API returns an empty list, indicating no data was found.',
         () async {
