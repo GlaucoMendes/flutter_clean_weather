@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get_it/get_it.dart';
 
 import 'core/locator.dart';
+import 'core/services/localization_service.dart';
 import 'core/theme/weather_theme_data.dart';
 import 'presentation/home/cubits/condition/current_condition_cubit.dart';
 import 'presentation/home/cubits/forecast/forecast_cubit.dart';
@@ -17,6 +18,7 @@ void main() {
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -25,11 +27,15 @@ class MainApp extends StatelessWidget {
         BlocProvider<CurrentConditionCubit>(create: (context) => CurrentConditionCubit(GetIt.I())),
         BlocProvider<LocationCubit>(create: (context) => LocationCubit(GetIt.I())),
       ],
-      child: MaterialApp(
-        home: const OnboardingScreen(),
-        theme: WeatherThemeData.theme,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
+      child: ValueListenableBuilder(
+        valueListenable: LocalizationService.locale,
+        builder: (context, locale, child) => MaterialApp(
+          home: const OnboardingScreen(),
+          theme: WeatherThemeData.theme,
+          locale: locale,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+        ),
       ),
     );
   }

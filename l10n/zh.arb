@@ -1,0 +1,28 @@
+{
+  "@@locale": "zh",
+  "en": "英语",
+  "pt": "葡萄牙语",
+  "zh": "中文",
+  "nDaysForecast": "{days}天的预报",
+  "@nDaysForecast": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "today": "今天",
+  "selectLocation": "选择一个位置",
+  "currentLocation": "当前位置",
+  "searchLocation": "搜索位置",
+  "locationPermissionDenied": "位置权限被拒绝",
+  "waitingGPS": "等待GPS...",
+  "next": "下一个",
+  "searchLocationBy": "城市、州或国家",
+  "search": "搜索",
+  "welcome": "欢迎",
+  "selectLanguage": "选择一种语言",
+  "selectApi": "选择一个API",
+  "accuDescription": "每天50次请求",
+  "wapiDescription": "每月100万次请求"
+}

@@ -17,6 +17,16 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final pageController = PageController();
+
+  void nextPage() {
+    unawaited(
+      pageController.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,16 +37,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: PageView(
         controller: pageController,
         children: [
-          const SelectLanguagePage(),
+          SelectLanguagePage(onNext: nextPage),
           SelectApiPage(
             onApiSelected: (api) async {
               await Locator.updateWeatherRepository(api);
-              unawaited(
-                pageController.nextPage(
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                ),
-              );
+              nextPage();
             },
           ),
           const SelectLocationPage(),

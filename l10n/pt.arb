@@ -1,6 +1,9 @@
 {
   "@@locale": "pt",
-  "nDaysForecast": "Previsão de {days} dias",
+  "en": "Inglês",
+  "pt": "Português",
+  "zh": "Chinês",
+  "nDaysForecast": "Previsão para {days} dias",
   "@nDaysForecast": {
     "placeholders": {
       "days": {
@@ -9,12 +12,17 @@
     }
   },
   "today": "Hoje",
-  "selectLocation": "Selecione um local",
+  "selectLocation": "Selecione uma localização",
   "currentLocation": "Localização Atual",
   "searchLocation": "Buscar Localização",
   "locationPermissionDenied": "Permissão de localização negada",
   "waitingGPS": "Aguardando GPS...",
   "next": "Próximo",
   "searchLocationBy": "Cidade, Estado ou País",
-  "search": "Buscar"
+  "search": "Buscar",
+  "welcome": "Bem-vindo",
+  "selectLanguage": "Selecione um idioma",
+  "selectApi": "Selecione uma API",
+  "accuDescription": "50 solicitações por dia",
+  "wapiDescription": "1 milhão de solicitações por mês"
 }

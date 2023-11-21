@@ -1,5 +1,8 @@
 {
   "@@locale": "en",
+  "en": "English",
+  "pt": "Portuguese",
+  "zh": "Chinese",
   "nDaysForecast": "{days}-day forecast",
   "@nDaysForecast": {
     "placeholders": {
@@ -17,5 +20,9 @@
   "next": "Next",
   "searchLocationBy": "City, State, or Country",
   "search": "Search",
-  "welcome": "Welcome"
+  "welcome": "Welcome",
+  "selectLanguage": "Select a language",
+  "selectApi": "SelecwapiDescriptiont an API",
+  "accuDescription": "50 requests per day",
+  "wapiDescription": "1 million requests per month"
 }

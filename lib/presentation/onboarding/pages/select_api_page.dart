@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/core.dart';
 import '../../../core/enums/weather_api_enum.dart';
 
 class SelectApiPage extends StatelessWidget {
@@ -12,17 +13,17 @@ class SelectApiPage extends StatelessWidget {
       body: Column(
         children: [
           const SizedBox(height: 64),
-          Text('Select API', style: Theme.of(context).textTheme.titleLarge),
+          Text(context.l10n.selectApi, style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 24),
           _ApiTag(
             asset: 'assets/logos/wapi.png',
-            subttitle: '1 million requests per month',
+            subttitle: context.l10n.wapiDescription,
             onTap: () => onApiSelected(WeatherApi.weatherapi),
           ),
           const SizedBox(height: 16),
           _ApiTag(
             asset: 'assets/logos/accu.png',
-            subttitle: '50 requests per day',
+            subttitle: context.l10n.accuDescription,
             onTap: () => onApiSelected(WeatherApi.accuweather),
           ),
         ],
