@@ -20,4 +20,14 @@ Aplicativo de previsão de tempo multi-plataforma (mobile, web e desktop)  desen
 
 
 ### Screenshots
-<table>  <tr>  <td><img src="https://raw.githubusercontent.com/GlaucoMendes/flutter_clean_weather/main/screenshots/onboarding1.png" alt="Imagem 1"></td> <td><img src="https://raw.githubusercontent.com/GlaucoMendes/flutter_clean_weather/main/screenshots/onboarding2.png" alt="Imagem 2"></td> </tr> <tr> <td><img src="https://raw.githubusercontent.com/GlaucoMendes/flutter_clean_weather/main/screenshots/onboarding3.png" alt="Imagem 3"></td> <td><img src="https://raw.githubusercontent.com/GlaucoMendes/flutter_clean_weather/main/screenshots/home.png" alt="Imagem 4"></td> </tr> </table>
+<table align="center">
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/GlaucoMendes/flutter_clean_weather/main/screenshots/onboarding1.png" alt="Imagem 1" height="300"></td>
+    <td><img src="https://raw.githubusercontent.com/GlaucoMendes/flutter_clean_weather/main/screenshots/onboarding2.png" alt="Imagem 2" height="300"></td>
+  </tr>
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/GlaucoMendes/flutter_clean_weather/main/screenshots/onboarding3.png" alt="Imagem 3" height="300"></td>
+    <td><img src="https://raw.githubusercontent.com/GlaucoMendes/flutter_clean_weather/main/screenshots/home.png" alt="Imagem 4" height="300"></td>
+  </tr>
+</table>
+
