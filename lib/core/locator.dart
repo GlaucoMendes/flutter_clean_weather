@@ -61,7 +61,7 @@ class Locator {
     );
     final wapiDio = Dio(
       BaseOptions(
-        baseUrl: 'http://api.weatherapi.com/v1/',
+        baseUrl: 'https://api.weatherapi.com/v1/',
         queryParameters: {
           // TODO(Glauco): Move this to a config file
           'key': '13e13b1293c348c1968230607231611',
